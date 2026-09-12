@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Search, BookOpen, ChevronDown, ChevronRight } from "lucide-react";
+import { Search, BookOpen, ChevronDown, ChevronRight, Layers, ArrowLeft, ArrowRight, RotateCcw } from "lucide-react";
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -27,6 +27,9 @@ export default function Glossary() {
   const [search, setSearch]   = useState("");
   const [catFilter, setCat]   = useState("All");
   const [expanded, setExpanded] = useState(null);
+  const [mode, setMode] = useState("list");
+  const [flashcardIndex, setFlashcardIndex] = useState(0);
+  const [flashcardRevealed, setFlashcardRevealed] = useState(false);
 
   useEffect(() => {
     fetch(`${BASE}data/glossary.json`)
@@ -47,6 +50,21 @@ export default function Glossary() {
       return matchSearch && matchCat;
     })
     .sort((a, b) => a.term.localeCompare(b.term, undefined, { sensitivity: "base" }));
+
+  useEffect(() => {
+    setFlashcardIndex(0);
+    setFlashcardRevealed(false);
+  }, [search, catFilter]);
+
+  const currentFlashcard = filtered[flashcardIndex];
+  const showPreviousFlashcard = () => {
+    setFlashcardIndex(index => (index - 1 + filtered.length) % filtered.length);
+    setFlashcardRevealed(false);
+  };
+  const showNextFlashcard = () => {
+    setFlashcardIndex(index => (index + 1) % filtered.length);
+    setFlashcardRevealed(false);
+  };
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-8 space-y-6">
@@ -78,6 +96,22 @@ export default function Glossary() {
         </div>
       </div>
 
+      <div className="flex items-center justify-between gap-3 flex-wrap">
+        <div className="flex items-center gap-1.5 rounded-lg border border-slate-800 bg-slate-900 p-1">
+          <button onClick={() => setMode("list")}
+            className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs transition-colors ${mode === "list" ? "bg-emerald-500/10 text-emerald-400" : "text-slate-500 hover:text-slate-300"}`}>
+            <BookOpen size={13}/> List
+          </button>
+          <button onClick={() => { setMode("flashcards"); setFlashcardRevealed(false); }}
+            className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs transition-colors ${mode === "flashcards" ? "bg-emerald-500/10 text-emerald-400" : "text-slate-500 hover:text-slate-300"}`}>
+            <Layers size={13}/> Flashcards
+          </button>
+        </div>
+        {mode === "flashcards" && filtered.length > 0 && (
+          <span className="text-xs text-slate-600">{flashcardIndex + 1} of {filtered.length}</span>
+        )}
+      </div>
+
       {/* Count */}
       {!loading && !error && (
         <p className="text-xs text-slate-600">{filtered.length} term{filtered.length!==1?"s":""} shown</p>
@@ -97,7 +131,7 @@ export default function Glossary() {
       )}
 
       {/* Terms list */}
-      <div className="space-y-2">
+      {mode === "list" && <div className="space-y-2">
         {filtered.map(t => {
           const isOpen = expanded === t.id;
           return (
@@ -109,9 +143,6 @@ export default function Glossary() {
                     <span className="font-semibold text-slate-100 text-sm">{t.term}</span>
                     {t.categories.map(c => <CategoryBadge key={c} cat={c}/>)}
                   </div>
-                  {!isOpen && (
-                    <p className="text-xs text-slate-500 mt-0.5 truncate">{t.definition.slice(0, 100)}…</p>
-                  )}
                 </div>
                 {isOpen ? <ChevronDown size={15} className="text-slate-500 flex-shrink-0 mt-0.5"/> : <ChevronRight size={15} className="text-slate-500 flex-shrink-0 mt-0.5"/>}
               </button>
@@ -142,7 +173,50 @@ export default function Glossary() {
             No terms match "{search}"{catFilter !== "All" ? ` in ${catFilter}` : ""}.
           </div>
         )}
-      </div>
+      </div>}
+
+      {mode === "flashcards" && !loading && !error && currentFlashcard && (
+        <div className="space-y-4">
+          <button onClick={() => setFlashcardRevealed(revealed => !revealed)}
+            className="w-full min-h-72 rounded-2xl border border-emerald-500/30 bg-slate-900 p-8 text-left shadow-lg shadow-black/20 transition-colors hover:border-emerald-400/60">
+            <div className="flex items-start justify-between gap-4 mb-10">
+              <div className="flex items-center gap-2 flex-wrap">
+                {currentFlashcard.categories.map(category => <CategoryBadge key={category} cat={category}/>) }
+              </div>
+              <RotateCcw size={16} className="text-slate-600"/>
+            </div>
+            <h2 className="text-2xl font-bold text-white">{currentFlashcard.term}</h2>
+            {!flashcardRevealed && <p className="mt-4 text-xs text-slate-600">Click to reveal definition</p>}
+            {flashcardRevealed && (
+              <div className="mt-6 space-y-4 border-t border-slate-800 pt-5">
+                <p className="text-sm leading-relaxed text-slate-300">{currentFlashcard.definition}</p>
+                <div className="rounded-lg border border-emerald-500/20 bg-emerald-900/10 p-3">
+                  <div className="mb-1 text-xs font-semibold text-emerald-400">ELI5 (plain English)</div>
+                  <p className="text-xs leading-relaxed text-slate-400">{currentFlashcard.eli5}</p>
+                </div>
+                {currentFlashcard.relevance && <p className="text-xs leading-relaxed text-slate-500">{currentFlashcard.relevance}</p>}
+              </div>
+            )}
+          </button>
+          <div className="flex items-center justify-center gap-3">
+            <button onClick={showPreviousFlashcard} aria-label="Previous flashcard" title="Previous flashcard"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-700 text-slate-400 transition-colors hover:border-emerald-500/50 hover:text-emerald-400">
+              <ArrowLeft size={15}/>
+            </button>
+            <button onClick={() => setFlashcardRevealed(false)} className="text-xs text-slate-500 hover:text-slate-300">Hide answer</button>
+            <button onClick={showNextFlashcard} aria-label="Next flashcard" title="Next flashcard"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-700 text-slate-400 transition-colors hover:border-emerald-500/50 hover:text-emerald-400">
+              <ArrowRight size={15}/>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {mode === "flashcards" && !loading && !error && filtered.length === 0 && (
+        <div className="text-center text-slate-600 py-12 text-sm">
+          No terms match "{search}"{catFilter !== "All" ? ` in ${catFilter}` : ""}.
+        </div>
+      )}
 
       {/* Add note */}
       <div className="text-xs text-slate-700 text-center pb-4">
