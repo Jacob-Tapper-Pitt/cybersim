@@ -143,6 +143,9 @@ export default function Glossary() {
                     <span className="font-semibold text-slate-100 text-sm">{t.term}</span>
                     {t.categories.map(c => <CategoryBadge key={c} cat={c}/>)}
                   </div>
+                  {!isOpen && (
+                    <p className="text-xs text-slate-500 mt-0.5 truncate">{t.definition.slice(0, 100)}…</p>
+                  )}
                 </div>
                 {isOpen ? <ChevronDown size={15} className="text-slate-500 flex-shrink-0 mt-0.5"/> : <ChevronRight size={15} className="text-slate-500 flex-shrink-0 mt-0.5"/>}
               </button>
