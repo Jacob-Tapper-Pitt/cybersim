@@ -56,7 +56,9 @@ export default function Tutorials({ openGuide }) {
   };
 
   const allCats = ["All", ...new Set(index.map(t => t.category))];
-  const filtered = catFilter === "All" ? index : index.filter(t => t.category === catFilter);
+  const filtered = (catFilter === "All" ? index : index.filter(t => t.category === catFilter))
+    .slice()
+    .sort((a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: "base" }));
 
   // ── Tutorial viewer ──
   if (selected) return (

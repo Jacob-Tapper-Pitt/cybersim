@@ -1589,5 +1589,229 @@
       "Career"
     ],
     "relevance": "Covered in Secure Software Development, Security Architecture, and CISSP coursework. A practical skill for any security-focused developer or architect."
+  },
+  {
+    "id": "firewall",
+    "term": "Firewall",
+    "definition": "A security system that monitors and controls incoming and outgoing network traffic based on a set of rules. It acts as a barrier between a trusted internal network and untrusted external networks.",
+    "eli5": "A firewall is like a bouncer that checks network traffic against a guest list.",
+    "categories": ["Networking", "Security"],
+    "relevance": "Core topic in Network Security, Firewall Administration, CompTIA Security+, and Network+."
+  },
+  {
+    "id": "vpn",
+    "term": "VPN (Virtual Private Network)",
+    "definition": "A technology that creates an encrypted connection over a less secure network such as the internet, tunneling traffic through a remote server.",
+    "eli5": "A VPN is like sending your internet traffic through a locked private tunnel.",
+    "categories": ["Networking", "Security"],
+    "relevance": "Covered in Network Security, remote access, and secure communications modules."
+  },
+  {
+    "id": "encryption",
+    "term": "Encryption",
+    "definition": "The process of converting readable plaintext into ciphertext using an algorithm and a key so unauthorized people cannot read it.",
+    "eli5": "Encryption scrambles a message so only someone with the right key can read it.",
+    "categories": ["Cryptography", "Security"],
+    "relevance": "Fundamental to cybersecurity and tested in Security+, CEH, and cryptography courses."
+  },
+  {
+    "id": "xss",
+    "term": "XSS (Cross-Site Scripting)",
+    "definition": "An injection attack where malicious scripts are placed in trusted web pages and executed in a visitor's browser.",
+    "eli5": "An attacker sneaks a harmful note into a trusted website so the browser runs it.",
+    "categories": ["Web Security", "Security"],
+    "relevance": "Covered in web application security and the OWASP Top 10."
+  },
+  {
+    "id": "sql-injection",
+    "term": "SQL Injection",
+    "definition": "An attack that inserts malicious SQL through user input to manipulate database queries, bypass authentication, or extract data.",
+    "eli5": "Someone writes a database command into a form field and tricks the application into running it.",
+    "categories": ["Web Security", "Databases"],
+    "relevance": "Frequently studied in Security+, ethical hacking, and web security courses."
+  },
+  {
+    "id": "penetration-testing",
+    "term": "Penetration Testing (Pen Testing)",
+    "definition": "An authorized simulated cyberattack used to evaluate security and find vulnerabilities before malicious attackers do.",
+    "eli5": "It is hiring an authorized tester to look for weak locks before a real burglar finds them.",
+    "categories": ["Security", "Career"],
+    "relevance": "A core cybersecurity skill using tools such as Nmap, Metasploit, and Burp Suite."
+  },
+  {
+    "id": "hash",
+    "term": "Hash / Hash Function",
+    "definition": "A one-way mathematical function that converts data into a fixed-size digest used to verify integrity and store passwords safely.",
+    "eli5": "A hash is like a fingerprint for data: easy to compare, but not practical to reverse into the original.",
+    "categories": ["Cryptography", "Security"],
+    "relevance": "Essential for password security, digital signatures, and data integrity."
+  },
+  {
+    "id": "malware",
+    "term": "Malware",
+    "definition": "Software intentionally designed to disrupt, damage, spy on, or gain unauthorized access to a computer system.",
+    "eli5": "Malware is software that secretly does something harmful to a computer or its user.",
+    "categories": ["Security", "General"],
+    "relevance": "Broadly covered in security fundamentals, ethical hacking, and incident response."
+  },
+  {
+    "id": "vlan",
+    "term": "VLAN (Virtual Local Area Network)",
+    "definition": "A logical grouping of devices that behaves like a separate network even when the devices share physical network hardware.",
+    "eli5": "A VLAN puts different departments on separate virtual walkie-talkie channels in the same building.",
+    "categories": ["Networking"],
+    "relevance": "Important for network administration, segmentation, and Cisco CCNA study."
+  },
+  {
+    "id": "phishing",
+    "term": "Phishing",
+    "definition": "A social engineering attack that impersonates a trusted organization to trick people into revealing information or taking an unsafe action.",
+    "eli5": "It is a fake message pretending to be from someone you trust so you hand over something valuable.",
+    "categories": ["Security", "Social Engineering"],
+    "relevance": "A common real-world attack vector covered in security awareness and incident response."
+  },
+  {
+    "id": "zero-day",
+    "term": "Zero-Day Vulnerability",
+    "definition": "A software flaw unknown to the vendor or without an available patch, allowing attackers to exploit it before defenders can prepare a fix.",
+    "eli5": "It is a secret back door that the owner does not know about yet.",
+    "categories": ["Security", "Vulnerabilities"],
+    "relevance": "Important in threat intelligence, vulnerability management, and malware analysis."
+  },
+  {
+    "id": "osi-model",
+    "term": "OSI Model",
+    "definition": "A seven-layer framework describing network communication: Physical, Data Link, Network, Transport, Session, Presentation, and Application.",
+    "eli5": "The OSI model breaks network communication into layers, like separate steps in a delivery process.",
+    "categories": ["Networking", "General"],
+    "relevance": "A foundational concept for Network+, CCNA, and network security certifications."
+  },
+  {
+    "id": "tcp-ip",
+    "term": "TCP/IP",
+    "definition": "The foundational suite of internet protocols. TCP provides reliable ordered delivery, while IP handles addressing and routing.",
+    "eli5": "IP finds the destination and TCP makes sure the message arrives in the right order.",
+    "categories": ["Networking"],
+    "relevance": "Essential foundation for networking, security, and network troubleshooting."
+  },
+  {
+    "id": "port",
+    "term": "Port",
+    "definition": "A numbered virtual endpoint that identifies which application or service should receive network traffic. Ports range from 0 to 65535.",
+    "eli5": "If an IP address is a building, a port is the apartment number for a particular service.",
+    "categories": ["Networking"],
+    "relevance": "Critical for firewalls, network scanning, and understanding services such as HTTP, HTTPS, and SSH."
+  },
+  {
+    "id": "dns",
+    "term": "DNS (Domain Name System)",
+    "definition": "The system that translates human-readable domain names into IP addresses used by computers for communication.",
+    "eli5": "DNS is the internet's phone book: it turns a name into a number.",
+    "categories": ["Networking"],
+    "relevance": "A core networking topic; DNS spoofing and cache poisoning are common security examples."
+  },
+  {
+    "id": "social-engineering",
+    "term": "Social Engineering",
+    "definition": "The psychological manipulation of people into performing actions or revealing confidential information by exploiting trust, authority, or urgency.",
+    "eli5": "It tricks people instead of attacking computers directly.",
+    "categories": ["Security", "Social Engineering"],
+    "relevance": "Key to security awareness, ethical hacking, phishing analysis, and incident response."
+  },
+  {
+    "id": "authentication",
+    "term": "Authentication",
+    "definition": "The process of verifying that a user, device, or service is who or what it claims to be.",
+    "eli5": "Authentication asks, 'Are you really you?'",
+    "categories": ["Security", "General"],
+    "relevance": "Core to identity management, web security, operating systems, and Security+ study."
+  },
+  {
+    "id": "authorization",
+    "term": "Authorization",
+    "definition": "The process of deciding what an authenticated user, device, or service is allowed to access or do.",
+    "eli5": "Authentication checks who you are; authorization checks which rooms you may enter.",
+    "categories": ["Security", "Web Security"],
+    "relevance": "Important for access control, secure APIs, databases, cloud security, and OWASP topics."
+  },
+  {
+    "id": "mfa",
+    "term": "MFA (Multi-Factor Authentication)",
+    "definition": "An authentication method requiring two or more different factors, such as a password plus a code or security key.",
+    "eli5": "MFA uses more than one kind of proof before opening the door.",
+    "categories": ["Security", "Social Engineering"],
+    "relevance": "A practical defense against stolen passwords and a common identity management topic."
+  },
+  {
+    "id": "cia-triad",
+    "term": "CIA Triad",
+    "definition": "A security model built around confidentiality, integrity, and availability: keeping information secret, correct, and accessible when needed.",
+    "eli5": "The CIA triad asks whether data is private, accurate, and available.",
+    "categories": ["Security", "General"],
+    "relevance": "A foundational framework for security policies, risk assessments, and Security+ study."
+  },
+  {
+    "id": "least-privilege",
+    "term": "Principle of Least Privilege",
+    "definition": "The practice of giving users, applications, and services only the permissions needed to perform their tasks.",
+    "eli5": "Give each person only the keys needed for their job, not a master key.",
+    "categories": ["Security", "General"],
+    "relevance": "Used in operating systems, databases, cloud IAM, and defensive architecture."
+  },
+  {
+    "id": "ids-ips",
+    "term": "IDS / IPS",
+    "definition": "An Intrusion Detection System alerts on suspicious activity, while an Intrusion Prevention System can also block or stop that activity.",
+    "eli5": "An IDS is a security alarm; an IPS is an alarm that can also lock the door.",
+    "categories": ["Networking", "Security"],
+    "relevance": "Common in network defense labs and security monitoring coursework."
+  },
+  {
+    "id": "cve",
+    "term": "CVE (Common Vulnerabilities and Exposures)",
+    "definition": "A public identification system for known cybersecurity vulnerabilities, giving each issue a unique identifier.",
+    "eli5": "A CVE is a tracking number for a known software security problem.",
+    "categories": ["Security", "Vulnerabilities"],
+    "relevance": "Used in vulnerability scanning, patch management, threat intelligence, and security advisories."
+  },
+  {
+    "id": "vulnerability",
+    "term": "Vulnerability",
+    "definition": "A weakness in software, hardware, configuration, or process that could be exploited to harm confidentiality, integrity, or availability.",
+    "eli5": "A vulnerability is a weak point an attacker might use to get past a security control.",
+    "categories": ["Security", "Vulnerabilities"],
+    "relevance": "A basic concept for risk assessment, secure coding, vulnerability management, and ethical hacking."
+  },
+  {
+    "id": "incident-response",
+    "term": "Incident Response",
+    "definition": "The organized process of preparing for, detecting, containing, investigating, recovering from, and learning from a cybersecurity incident.",
+    "eli5": "It is the emergency plan for stopping damage and learning what happened.",
+    "categories": ["Security", "Career"],
+    "relevance": "Central to SOC analyst, digital forensics, threat hunting, and security operations coursework."
+  },
+  {
+    "id": "ssh",
+    "term": "SSH (Secure Shell)",
+    "definition": "A protocol providing encrypted remote login and command execution over a network, with support for secure file transfer and tunneling.",
+    "eli5": "SSH is a locked, private terminal session to another computer.",
+    "categories": ["Networking", "Security"],
+    "relevance": "Essential for Linux administration, cloud servers, Git authentication, and cybersecurity labs."
+  },
+  {
+    "id": "digital-signature",
+    "term": "Digital Signature",
+    "definition": "A cryptographic proof that verifies who signed digital data and whether the data changed after signing.",
+    "eli5": "It is a tamper-evident signature proving who approved a message and that it was not changed.",
+    "categories": ["Cryptography", "Security"],
+    "relevance": "Used in software updates, certificates, secure email, and code signing."
+  },
+  {
+    "id": "public-key-cryptography",
+    "term": "Public-Key Cryptography",
+    "definition": "A cryptographic system using a related public key that can be shared and private key that must be protected.",
+    "eli5": "Anyone can use your public padlock, but only your private key can open it.",
+    "categories": ["Cryptography", "Security"],
+    "relevance": "Supports HTTPS, SSH, digital signatures, secure email, and certificates."
   }
 ]

@@ -48,7 +48,12 @@ export default function Guides({ initialGuideId }) {
   };
 
   const allCats = ["All", ...new Set(index.map(g => g.category))];
-  const filtered = catFilter === "All" ? index : index.filter(g => g.category === catFilter);
+  const filtered = (catFilter === "All" ? index : index.filter(g => g.category === catFilter))
+    .slice()
+    .sort((a, b) => {
+      const sortTitle = title => title.replace(/^(installing|setting up)\s+/i, "");
+      return sortTitle(a.title).localeCompare(sortTitle(b.title), undefined, { sensitivity: "base" });
+    });
 
   // ── Guide viewer ──
   if (selected) return (
