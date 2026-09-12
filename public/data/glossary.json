@@ -126,5 +126,101 @@
     "eli5": "Tricking people instead of hacking computers. Like pretending to be IT support to get someone to give you their password.",
     "categories": ["Security", "Social Engineering"],
     "relevance": "Key topic in Security Awareness training and Ethical Hacking. Often considered the most effective attack vector because it bypasses technical defenses."
+  },
+  {
+    "id": "authentication",
+    "term": "Authentication",
+    "definition": "The process of verifying that a user, device, or service is who or what it claims to be. Common factors include something you know, have, or are.",
+    "eli5": "Authentication is the security check that asks, 'Are you really you?' before letting you in.",
+    "categories": ["Security", "General"],
+    "relevance": "A core concept in identity and access management, web security, operating systems, and Security+ coursework."
+  },
+  {
+    "id": "authorization",
+    "term": "Authorization",
+    "definition": "The process of deciding what an authenticated user, device, or service is allowed to access or do.",
+    "eli5": "Authentication checks your identity; authorization checks which rooms you are allowed to enter.",
+    "categories": ["Security", "Web Security"],
+    "relevance": "Important for access control, secure APIs, databases, cloud security, and the OWASP Top 10."
+  },
+  {
+    "id": "mfa",
+    "term": "MFA (Multi-Factor Authentication)",
+    "definition": "An authentication method that requires two or more different factors to verify a user's identity, such as a password plus a code from a phone or a hardware security key.",
+    "eli5": "Instead of relying on one lock, MFA asks for two different proofs before opening the door.",
+    "categories": ["Security", "Social Engineering"],
+    "relevance": "A practical defense against stolen passwords and a common topic in security awareness, identity management, and certification exams."
+  },
+  {
+    "id": "cia-triad",
+    "term": "CIA Triad",
+    "definition": "A security model built around confidentiality, integrity, and availability. It helps defenders evaluate whether information is protected from unauthorized access, unauthorized changes, and harmful disruption.",
+    "eli5": "The CIA triad asks whether data is kept secret, kept correct, and available when people need it.",
+    "categories": ["Security", "General"],
+    "relevance": "A foundational framework used in security policies, risk assessments, incident analysis, and Security+ coursework."
+  },
+  {
+    "id": "least-privilege",
+    "term": "Principle of Least Privilege",
+    "definition": "The practice of giving users, applications, and services only the permissions they need to perform their tasks, and no more.",
+    "eli5": "Give each person only the keys needed for their job, not a master key to the whole building.",
+    "categories": ["Security", "General"],
+    "relevance": "Used in operating systems, databases, cloud IAM, application security, and defensive architecture."
+  },
+  {
+    "id": "ids-ips",
+    "term": "IDS / IPS",
+    "definition": "An Intrusion Detection System (IDS) monitors activity and raises alerts about suspicious behavior. An Intrusion Prevention System (IPS) can also block or stop detected activity.",
+    "eli5": "An IDS is a security alarm; an IPS is an alarm that can also lock the door when it spots trouble.",
+    "categories": ["Networking", "Security"],
+    "relevance": "Common in network defense labs and important for understanding monitoring, detection engineering, and Security+ concepts."
+  },
+  {
+    "id": "cve",
+    "term": "CVE (Common Vulnerabilities and Exposures)",
+    "definition": "A public identification system for known cybersecurity vulnerabilities. Each listed issue receives a unique identifier, such as CVE-2024-12345, so researchers and defenders can discuss and track it consistently.",
+    "eli5": "A CVE is a tracking number for a known software security problem.",
+    "categories": ["Security", "Vulnerabilities"],
+    "relevance": "Used in vulnerability scanning, patch management, threat intelligence, penetration testing, and security advisories."
+  },
+  {
+    "id": "vulnerability",
+    "term": "Vulnerability",
+    "definition": "A weakness in software, hardware, configuration, or process that could be exploited to harm confidentiality, integrity, or availability.",
+    "eli5": "A vulnerability is a weak point that an attacker might use to get past a security control.",
+    "categories": ["Security", "Vulnerabilities"],
+    "relevance": "A basic concept for risk assessment, secure coding, vulnerability management, and ethical hacking courses."
+  },
+  {
+    "id": "incident-response",
+    "term": "Incident Response",
+    "definition": "The organized process of preparing for, detecting, containing, investigating, recovering from, and learning from a cybersecurity incident.",
+    "eli5": "Incident response is the emergency plan for finding out what happened, stopping the damage, and making sure it does not happen again.",
+    "categories": ["Security", "Career"],
+    "relevance": "Central to SOC analyst, digital forensics, threat hunting, and security operations coursework."
+  },
+  {
+    "id": "ssh",
+    "term": "SSH (Secure Shell)",
+    "definition": "A protocol that provides encrypted remote login and command execution over a network. SSH can also securely transfer files and create tunnels for other traffic.",
+    "eli5": "SSH is a locked, private terminal session to another computer over a network.",
+    "categories": ["Networking", "Security"],
+    "relevance": "Essential for Linux administration, cloud servers, Git authentication, and cybersecurity lab environments."
+  },
+  {
+    "id": "digital-signature",
+    "term": "Digital Signature",
+    "definition": "A cryptographic proof that verifies who signed digital data and whether the data was changed after signing. It uses a private key to sign and a public key to verify.",
+    "eli5": "A digital signature is like a tamper-evident signature that proves both who approved a message and that nobody changed it.",
+    "categories": ["Cryptography", "Security"],
+    "relevance": "Used in software updates, certificates, secure email, code signing, and public-key infrastructure."
+  },
+  {
+    "id": "public-key-cryptography",
+    "term": "Public-Key Cryptography",
+    "definition": "A cryptographic system that uses a mathematically related public key and private key. The public key can be shared, while the private key must be protected.",
+    "eli5": "Anyone can use your public padlock to lock a box for you, but only your private key can open it.",
+    "categories": ["Cryptography", "Security"],
+    "relevance": "Supports HTTPS, SSH, digital signatures, secure email, certificates, and many modern authentication systems."
   }
 ]

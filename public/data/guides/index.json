@@ -78,5 +78,35 @@
     "duration": "30 min",
     "tags": ["Docker", "Containers", "DVWA", "Juice Shop", "Lab Setup"],
     "file": "docker-install.md"
+  },
+  {
+    "id": "tcpdump-install",
+    "title": "Installing tcpdump",
+    "description": "Install tcpdump and learn the capture and filtering commands used for lightweight network troubleshooting and packet analysis.",
+    "difficulty": "Beginner",
+    "category": "Network Tools",
+    "duration": "15 min",
+    "tags": ["tcpdump", "Packet Capture", "Network Analysis", "Linux"],
+    "file": "tcpdump-install.md"
+  },
+  {
+    "id": "ghidra-setup",
+    "title": "Setting Up Ghidra",
+    "description": "Install Ghidra and configure a first reverse-engineering project for inspecting binaries in a safe, offline workflow.",
+    "difficulty": "Intermediate",
+    "category": "Reverse Engineering",
+    "duration": "30 min",
+    "tags": ["Ghidra", "Reverse Engineering", "Disassembly", "Java"],
+    "file": "ghidra-setup.md"
+  },
+  {
+    "id": "juice-shop-install",
+    "title": "Installing OWASP Juice Shop",
+    "description": "Run OWASP Juice Shop locally with Docker or Node.js to practice web security concepts without targeting a real website.",
+    "difficulty": "Beginner",
+    "category": "Web Security",
+    "duration": "20 min",
+    "tags": ["OWASP", "Juice Shop", "Docker", "Web Security"],
+    "file": "juice-shop-install.md"
   }
 ]

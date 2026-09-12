@@ -147,7 +147,7 @@ export default function Guides({ initialGuideId }) {
       </div>
 
       <div className="text-xs text-slate-700 text-center pb-4">
-        To add a guide: create a <code className="font-mono">.md</code> file in <code className="font-mono">public/data/guides/</code> and add an entry to <code className="font-mono">index.json</code>.
+        Created by CyberSim Team [Jacob T, Layan E, Ivan L]
       </div>
     </div>
   );

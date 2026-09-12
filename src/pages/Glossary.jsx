@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Search, BookOpen, ChevronDown, ChevronRight } from "lucide-react";
+import { Search, BookOpen, ChevronDown, ChevronRight, Layers, ArrowLeft, ArrowRight, RotateCcw, Shuffle } from "lucide-react";
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -27,6 +27,10 @@ export default function Glossary() {
   const [search, setSearch]   = useState("");
   const [catFilter, setCat]   = useState("All");
   const [expanded, setExpanded] = useState(null);
+  const [mode, setMode] = useState("list");
+  const [flashcardIndex, setFlashcardIndex] = useState(0);
+  const [flashcardRevealed, setFlashcardRevealed] = useState(false);
+  const [flashcardOrder, setFlashcardOrder] = useState([]);
 
   useEffect(() => {
     fetch(`${BASE}data/glossary.json`)
@@ -39,12 +43,43 @@ export default function Glossary() {
     a === "All" ? -1 : b === "All" ? 1 : a.localeCompare(b)
   );
 
-  const filtered = terms.filter(t => {
-    const q = search.toLowerCase();
-    const matchSearch = !q || t.term.toLowerCase().includes(q) || t.definition.toLowerCase().includes(q);
-    const matchCat = catFilter === "All" || t.categories.includes(catFilter);
-    return matchSearch && matchCat;
-  });
+  const filtered = terms
+    .filter(t => {
+      const q = search.toLowerCase();
+      const matchSearch = !q || t.term.toLowerCase().includes(q) || t.definition.toLowerCase().includes(q);
+      const matchCat = catFilter === "All" || t.categories.includes(catFilter);
+      return matchSearch && matchCat;
+    })
+    .sort((a, b) => a.term.localeCompare(b.term, undefined, { sensitivity: "base" }));
+
+  useEffect(() => {
+    setFlashcardIndex(0);
+    setFlashcardRevealed(false);
+    setFlashcardOrder(filtered.map(term => term.id));
+  }, [terms, search, catFilter]);
+
+  const flashcards = flashcardOrder
+    .map(id => filtered.find(term => term.id === id))
+    .filter(Boolean);
+  const currentFlashcard = flashcards[flashcardIndex];
+  const showPreviousFlashcard = () => {
+    setFlashcardIndex(index => (index - 1 + flashcards.length) % flashcards.length);
+    setFlashcardRevealed(false);
+  };
+  const showNextFlashcard = () => {
+    setFlashcardIndex(index => (index + 1) % flashcards.length);
+    setFlashcardRevealed(false);
+  };
+  const shuffleFlashcards = () => {
+    const shuffled = [...filtered.map(term => term.id)];
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+      [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+    }
+    setFlashcardOrder(shuffled);
+    setFlashcardIndex(0);
+    setFlashcardRevealed(false);
+  };
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-8 space-y-6">
@@ -76,6 +111,28 @@ export default function Glossary() {
         </div>
       </div>
 
+      <div className="flex items-center justify-between gap-3 flex-wrap">
+        <div className="flex items-center gap-1.5 rounded-lg border border-slate-800 bg-slate-900 p-1">
+          <button onClick={() => setMode("list")}
+            className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs transition-colors ${mode === "list" ? "bg-emerald-500/10 text-emerald-400" : "text-slate-500 hover:text-slate-300"}`}>
+            <BookOpen size={13}/> List
+          </button>
+          <button onClick={() => { setMode("flashcards"); setFlashcardRevealed(false); }}
+            className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs transition-colors ${mode === "flashcards" ? "bg-emerald-500/10 text-emerald-400" : "text-slate-500 hover:text-slate-300"}`}>
+            <Layers size={13}/> Flashcards
+          </button>
+        </div>
+        {mode === "flashcards" && flashcards.length > 0 && (
+          <div className="flex items-center gap-3">
+            <span className="text-xs text-slate-600">{flashcardIndex + 1} of {flashcards.length}</span>
+            <button onClick={shuffleFlashcards}
+              className="flex items-center gap-1.5 rounded-md border border-slate-700 px-3 py-1.5 text-xs text-slate-400 transition-colors hover:border-emerald-500/50 hover:text-emerald-400">
+              <Shuffle size={13}/> Shuffle
+            </button>
+          </div>
+        )}
+      </div>
+
       {/* Count */}
       {!loading && !error && (
         <p className="text-xs text-slate-600">{filtered.length} term{filtered.length!==1?"s":""} shown</p>
@@ -95,7 +152,7 @@ export default function Glossary() {
       )}
 
       {/* Terms list */}
-      <div className="space-y-2">
+      {mode === "list" && <div className="space-y-2">
         {filtered.map(t => {
           const isOpen = expanded === t.id;
           return (
@@ -140,12 +197,54 @@ export default function Glossary() {
             No terms match "{search}"{catFilter !== "All" ? ` in ${catFilter}` : ""}.
           </div>
         )}
-      </div>
+      </div>}
+
+      {mode === "flashcards" && !loading && !error && currentFlashcard && (
+        <div className="space-y-4">
+          <button onClick={() => setFlashcardRevealed(revealed => !revealed)}
+            className="w-full min-h-72 rounded-2xl border border-emerald-500/30 bg-slate-900 p-8 text-left shadow-lg shadow-black/20 transition-colors hover:border-emerald-400/60">
+            <div className="flex items-start justify-between gap-4 mb-10">
+              <div className="flex items-center gap-2 flex-wrap">
+                {currentFlashcard.categories.map(category => <CategoryBadge key={category} cat={category}/>) }
+              </div>
+              <RotateCcw size={16} className="text-slate-600"/>
+            </div>
+            <h2 className="text-2xl font-bold text-white">{currentFlashcard.term}</h2>
+            {!flashcardRevealed && <p className="mt-4 text-xs text-slate-600">Click to reveal definition</p>}
+            {flashcardRevealed && (
+              <div className="mt-6 space-y-4 border-t border-slate-800 pt-5">
+                <p className="text-sm leading-relaxed text-slate-300">{currentFlashcard.definition}</p>
+                <div className="rounded-lg border border-emerald-500/20 bg-emerald-900/10 p-3">
+                  <div className="mb-1 text-xs font-semibold text-emerald-400">ELI5 (plain English)</div>
+                  <p className="text-xs leading-relaxed text-slate-400">{currentFlashcard.eli5}</p>
+                </div>
+                {currentFlashcard.relevance && <p className="text-xs leading-relaxed text-slate-500">{currentFlashcard.relevance}</p>}
+              </div>
+            )}
+          </button>
+          <div className="flex items-center justify-center gap-3">
+            <button onClick={showPreviousFlashcard} aria-label="Previous flashcard" title="Previous flashcard"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-700 text-slate-400 transition-colors hover:border-emerald-500/50 hover:text-emerald-400">
+              <ArrowLeft size={15}/>
+            </button>
+            <button onClick={() => setFlashcardRevealed(false)} className="text-xs text-slate-500 hover:text-slate-300">Hide answer</button>
+            <button onClick={showNextFlashcard} aria-label="Next flashcard" title="Next flashcard"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-700 text-slate-400 transition-colors hover:border-emerald-500/50 hover:text-emerald-400">
+              <ArrowRight size={15}/>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {mode === "flashcards" && !loading && !error && filtered.length === 0 && (
+        <div className="text-center text-slate-600 py-12 text-sm">
+          No terms match "{search}"{catFilter !== "All" ? ` in ${catFilter}` : ""}.
+        </div>
+      )}
 
       {/* Add note */}
       <div className="text-xs text-slate-700 text-center pb-4">
-        To add or edit terms, modify <code className="font-mono">public/data/glossary.json</code>.
-        Each entry needs: <code className="font-mono">id, term, definition, eli5, categories[], relevance</code>.
+        Created by CyberSim Team [Jacob T, Layan E, Ivan L]
       </div>
     </div>
   );
