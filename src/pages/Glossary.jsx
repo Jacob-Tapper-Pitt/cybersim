@@ -39,12 +39,14 @@ export default function Glossary() {
     a === "All" ? -1 : b === "All" ? 1 : a.localeCompare(b)
   );
 
-  const filtered = terms.filter(t => {
-    const q = search.toLowerCase();
-    const matchSearch = !q || t.term.toLowerCase().includes(q) || t.definition.toLowerCase().includes(q);
-    const matchCat = catFilter === "All" || t.categories.includes(catFilter);
-    return matchSearch && matchCat;
-  });
+  const filtered = terms
+    .filter(t => {
+      const q = search.toLowerCase();
+      const matchSearch = !q || t.term.toLowerCase().includes(q) || t.definition.toLowerCase().includes(q);
+      const matchCat = catFilter === "All" || t.categories.includes(catFilter);
+      return matchSearch && matchCat;
+    })
+    .sort((a, b) => a.term.localeCompare(b.term, undefined, { sensitivity: "base" }));
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-8 space-y-6">
