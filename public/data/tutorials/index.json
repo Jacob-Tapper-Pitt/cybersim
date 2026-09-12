@@ -1,5 +1,15 @@
 [
   {
+    "id": "networking-fundamentals",
+    "title": "Networking Fundamentals (TCP/IP & OSI Model)",
+    "description": "Learn the OSI and TCP/IP models, IP addressing, TCP vs UDP, common ports, and DNS — the foundation for Wireshark and Nmap.",
+    "difficulty": "Beginner",
+    "category": "Networking",
+    "duration": "30 min",
+    "tags": ["Networking", "TCP/IP", "OSI Model"],
+    "file": "networking-fundamentals.md"
+  },
+  {
     "id": "wireshark",
     "title": "Wireshark Basics",
     "description": "Capture and analyze network traffic using Wireshark. Learn to read packets, apply filters, and identify common protocols.",
@@ -28,6 +38,16 @@
     "duration": "35 min",
     "tags": ["Linux", "Command Line", "Bash"],
     "file": "linux.md"
+  },
+  {
+    "id": "osint",
+    "title": "OSINT & Reconnaissance Basics",
+    "description": "Learn passive reconnaissance techniques — search operators, WHOIS/DNS recon, theHarvester, and Shodan — and how to reduce your own exposure.",
+    "difficulty": "Beginner",
+    "category": "Reconnaissance",
+    "duration": "30 min",
+    "tags": ["OSINT", "Reconnaissance", "Recon"],
+    "file": "osint.md"
   },
   {
     "id": "nmap",
@@ -88,5 +108,35 @@
     "duration": "35 min",
     "tags": ["Python", "Scripting", "Automation"],
     "file": "python-security.md"
+  },
+  {
+    "id": "digital-forensics",
+    "title": "Digital Forensics Basics",
+    "description": "Learn forensic imaging, hash verification, file carving, memory forensics with Volatility, and timeline analysis with Autopsy.",
+    "difficulty": "Intermediate",
+    "category": "Digital Forensics",
+    "duration": "40 min",
+    "tags": ["Forensics", "Incident Response", "Autopsy"],
+    "file": "digital-forensics.md"
+  },
+  {
+    "id": "malware-analysis",
+    "title": "Malware Analysis Basics",
+    "description": "Learn safe static and dynamic malware analysis techniques, sandboxing, and how to extract indicators of compromise (IOCs).",
+    "difficulty": "Intermediate",
+    "category": "Malware Analysis",
+    "duration": "40 min",
+    "tags": ["Malware Analysis", "Reverse Engineering", "Sandboxing"],
+    "file": "malware-analysis.md"
+  },
+  {
+    "id": "siem-log-analysis",
+    "title": "SOC Basics: SIEM & Log Analysis",
+    "description": "Learn how SOC analysts use SIEM platforms like Splunk and ELK to search, correlate, and triage security alerts from log data.",
+    "difficulty": "Intermediate",
+    "category": "Security Operations",
+    "duration": "35 min",
+    "tags": ["SIEM", "Log Analysis", "Blue Team"],
+    "file": "siem-log-analysis.md"
   }
 ]
