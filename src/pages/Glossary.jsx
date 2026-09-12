@@ -144,8 +144,7 @@ export default function Glossary() {
 
       {/* Add note */}
       <div className="text-xs text-slate-700 text-center pb-4">
-        To add or edit terms, modify <code className="font-mono">public/data/glossary.json</code>.
-        Each entry needs: <code className="font-mono">id, term, definition, eli5, categories[], relevance</code>.
+        Created by CyberSim Team [Jacob T, Layan E, Ivan L]
       </div>
     </div>
   );

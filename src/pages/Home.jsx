@@ -133,7 +133,7 @@ export default function Home({ setPage }) {
 
       {/* Footer note */}
       <div className="text-center text-xs text-slate-700 pb-4">
-        Created by CyberSim Team [Jacob T, Layan E, Ivan L].
+        Created by CyberSim Team [Jacob T, Layan E, Ivan L]
       </div>
     </div>
   );
