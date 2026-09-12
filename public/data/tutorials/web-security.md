@@ -6,18 +6,18 @@ Web applications are one of the most common attack surfaces in security today �
 
 ## The OWASP Top 10 (Overview)
 
-The [OWASP Top 10](/) is the industry-standard list of the most critical web application security risks, updated periodically by the Open Web Application Security Project:
+The [OWASP Top 10](https://top10.owasp.org/2025/) is the industry-standard list of the most critical web application security risks, updated periodically by the Open Web Application Security Project:
 
 1. **Broken Access Control** — users can act outside their intended permissions
-2. **Cryptographic Failures** — sensitive data exposed due to weak or missing encryption
-3. **Injection** — untrusted input is executed as code (SQL, command, etc.)
-4. **Insecure Design** — security flaws baked into the architecture itself
-5. **Security Misconfiguration** — default credentials, verbose errors, open cloud storage
-6. **Vulnerable and Outdated Components** — unpatched libraries and frameworks
-7. **Identification and Authentication Failures** — weak login and session handling
-8. **Software and Data Integrity Failures** — trusting unsigned code or updates
-9. **Security Logging and Monitoring Failures** — attacks go undetected
-10. **Server-Side Request Forgery (SSRF)** — server tricked into making unintended requests
+2. **Security Misconfiguration** — insecure defaults, incomplete configurations, or unnecessary features expose applications to attack
+3. **Software Supply Chain Failures** — compromised dependencies, build systems, or distribution processes introduce risk
+4. **Cryptographic Failures** — sensitive data is exposed due to weak or missing encryption
+5. **Injection** — untrusted input is interpreted as commands or queries
+6. **Insecure Design** — security flaws are built into the architecture or requirements
+7. **Authentication Failures** — weak identity verification, authentication, or session management enables account compromise
+8. **Software or Data Integrity Failures** — applications trust code, updates, or data without verifying its integrity
+9. **Security Logging and Alerting Failures** — attacks go undetected because events are not logged or alerts are ineffective
+10. **Mishandling of Exceptional Conditions** — errors and unexpected conditions are handled insecurely
 
 ---
 
