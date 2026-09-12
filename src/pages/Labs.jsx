@@ -3862,11 +3862,11 @@ export default function LabsPage({ addLog, addScore, logs, scores, setLogs, setS
       {/* Lab cards */}
       <div>
         <h2 className="text-xs font-semibold text-slate-600 uppercase tracking-widest mb-4">{dashPage===1?"Page 1 — Fundamentals":dashPage===2?"Page 2 — Web Attacks":dashPage===3?"Page 3 — Advanced Topics":"Page 4 — Defense Topics"}</h2>
-        <div className="columns-2 lg:columns-3 gap-3">
+        <div className="flex flex-col gap-2">
           {(dashPage===1 ? DASH_MODULES : dashPage===2 ? DASH_MODULES_P2 : dashPage===3 ? DASH_MODULES_P3 : DASH_MODULES_P4).map(m=>{
             const isOpen = expanded === m.id;
             return (
-              <div key={m.id} className={`break-inside-avoid mb-3 bg-slate-900 border border-slate-800 rounded-xl transition-all ${isOpen ? "ring-1 ring-slate-600/50 border-slate-600" : "hover:border-slate-700"}`}>
+              <div key={m.id} className={`bg-slate-900 border border-slate-800 rounded-xl transition-all ${isOpen ? "ring-1 ring-slate-600/50 border-slate-600" : "hover:border-slate-700"}`}>
                 <button onClick={()=>setExpanded(isOpen?null:m.id)} className="w-full text-left p-4 flex items-center gap-3">
                   <m.Icon size={18} className={`flex-shrink-0 ${colIcon[m.color]}`}/>
                   <div className="flex-1 min-w-0">
