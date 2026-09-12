@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.flashcard-scene {
+	perspective: 1000px;
+}
+
+.flashcard-card {
+	position: relative;
+	width: 100%;
+	min-height: 18rem;
+	transform-style: preserve-3d;
+	transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.2s;
+}
+
+.flashcard-card.is-flipped {
+	transform: rotateX(180deg);
+}
+
+.flashcard-face {
+	position: absolute;
+	inset: 0;
+	overflow-y: auto;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+
+.flashcard-back {
+	transform: rotateX(180deg);
+}

@@ -1,226 +1,1078 @@
 [
   {
-    "id": "firewall",
-    "term": "Firewall",
-    "definition": "A security system that monitors and controls incoming and outgoing network traffic based on a set of rules. It acts as a barrier between a trusted internal network and untrusted external networks, deciding what traffic is allowed through.",
-    "eli5": "Think of a firewall like a bouncer at a club — it checks every person (packet) trying to get in or out and only lets through the ones on the guest list.",
-    "categories": ["Networking", "Security"],
-    "relevance": "Core topic in Network Security and Firewall Administration. Appears in CompTIA Security+ and Network+ exams."
+    "id": "nat",
+    "term": "NAT (Network Address Translation)",
+    "definition": "A technique that maps private internal IP addresses to a single public IP address (or a small pool of them) when traffic leaves a network. It lets many devices share one public-facing address and hides internal network structure from outsiders.",
+    "eli5": "NAT is like an office's front desk that receives mail for everyone in the building using one street address, then routes it to the right internal desk.",
+    "categories": [
+      "Networking"
+    ],
+    "relevance": "Covered in Network+ and CCNA. Understanding NAT is essential before studying firewalls, port forwarding, and network segmentation."
   },
   {
-    "id": "vpn",
-    "term": "VPN (Virtual Private Network)",
-    "definition": "A technology that creates a secure, encrypted connection over a less secure network like the internet. It tunnels your traffic through a remote server, masking your IP address and encrypting your data.",
-    "eli5": "A VPN is like sending mail inside a locked box through a courier — nobody can see what's inside even if they intercept it.",
-    "categories": ["Networking", "Security"],
-    "relevance": "Covered in Network Security, Remote Access, and Secure Communications modules."
+    "id": "dhcp",
+    "term": "DHCP (Dynamic Host Configuration Protocol)",
+    "definition": "A protocol that automatically assigns IP addresses, subnet masks, gateways, and DNS servers to devices when they join a network, instead of requiring each device to be configured manually.",
+    "eli5": "DHCP is like a hotel front desk automatically assigning you a room number when you check in, instead of you having to pick and claim one yourself.",
+    "categories": [
+      "Networking"
+    ],
+    "relevance": "Foundational networking topic in Network+ and CCNA. Attackers can abuse DHCP through rogue servers, so it's also relevant to network security labs."
   },
   {
-    "id": "encryption",
-    "term": "Encryption",
-    "definition": "The process of converting readable data (plaintext) into an unreadable format (ciphertext) using an algorithm and a key. Only someone with the correct decryption key can convert it back to readable form.",
-    "eli5": "Encryption is like a secret code between two people. You scramble your message before sending it, and only the person with the decoder ring can read it.",
-    "categories": ["Cryptography", "Security"],
-    "relevance": "Fundamental to all cybersecurity disciplines. Tested in Security+, CEH, and CISSP certifications."
+    "id": "arp",
+    "term": "ARP (Address Resolution Protocol)",
+    "definition": "A protocol used to map an IP address to a physical MAC address on a local network, so devices know exactly which hardware to send frames to.",
+    "eli5": "ARP is like shouting 'who owns this apartment number?' in a building and having the right resident answer with their name so mail can be delivered directly to them.",
+    "categories": [
+      "Networking",
+      "Security"
+    ],
+    "relevance": "Core Network+ topic. ARP spoofing/poisoning attacks (used in man-in-the-middle attacks) are a common ethical hacking lab exercise."
   },
   {
-    "id": "xss",
-    "term": "XSS (Cross-Site Scripting)",
-    "definition": "A type of injection attack where malicious scripts are injected into otherwise trusted websites. When a browser visits the infected page, the malicious script executes with the same trust level as legitimate site code — allowing attackers to steal cookies, session tokens, or redirect users.",
-    "eli5": "Imagine someone sneaking a note into a school newsletter. When students read it, the note tells them to give their lunch money to the attacker.",
-    "categories": ["Web Security", "Security"],
-    "relevance": "Covered in Web Application Security and the OWASP Top 10. Common topic in ethical hacking courses."
+    "id": "mac-address",
+    "term": "MAC Address",
+    "definition": "A unique hardware identifier burned into a network interface card, used to identify a device on a local network at the data link layer (Layer 2 of the OSI model).",
+    "eli5": "A MAC address is like a device's permanent serial number tattoo — every network card ships with its own unique one.",
+    "categories": [
+      "Networking"
+    ],
+    "relevance": "Basic building block for understanding switching, ARP, VLANs, and MAC filtering; tested in Network+."
   },
   {
-    "id": "sql-injection",
-    "term": "SQL Injection",
-    "definition": "An attack that inserts or 'injects' malicious SQL code into a query through user input fields. If the application doesn't properly sanitize input, the injected code can manipulate the database — bypassing authentication, extracting data, or deleting records.",
-    "eli5": "Like a form asking for your name, but you write a secret command that tricks the computer into showing everyone's passwords instead.",
-    "categories": ["Web Security", "Databases"],
-    "relevance": "Frequently tested in Security+, CEH, and university Web Security courses. One of the oldest and most common vulnerabilities."
+    "id": "subnetting",
+    "term": "Subnetting",
+    "definition": "The practice of dividing a larger network into smaller, logically separated sub-networks (subnets) to improve organization, performance, and security through isolation.",
+    "eli5": "Subnetting is like splitting one huge apartment complex into smaller wings, each with its own mailroom, so traffic and access can be managed separately.",
+    "categories": [
+      "Networking"
+    ],
+    "relevance": "A required skill for Network+ and CCNA exams, and essential for designing segmented, defensible network architectures."
   },
   {
-    "id": "penetration-testing",
-    "term": "Penetration Testing (Pen Testing)",
-    "definition": "An authorized simulated cyberattack on a computer system performed to evaluate its security. Pen testers use the same tools and techniques as real attackers, but with permission, to find vulnerabilities before malicious actors do.",
-    "eli5": "Hiring someone to try to break into your house so you can find out all the weak locks and broken windows before a real burglar does.",
-    "categories": ["Security", "Career"],
-    "relevance": "Core skill for cybersecurity careers. Tools like Metasploit, Nmap, and Burp Suite are used extensively."
+    "id": "proxy-server",
+    "term": "Proxy Server",
+    "definition": "An intermediary server that sits between a client and the destination server, forwarding requests and responses on the client's behalf. Proxies can filter content, cache data, hide client IP addresses, or enforce security policies.",
+    "eli5": "A proxy is like a personal assistant who makes phone calls for you so the person on the other end never sees your own number.",
+    "categories": [
+      "Networking",
+      "Security"
+    ],
+    "relevance": "Relevant to web security, privacy tools, content filtering, and understanding how attackers hide behind proxy chains."
   },
   {
-    "id": "hash",
-    "term": "Hash / Hash Function",
-    "definition": "A one-way mathematical function that converts data of any size into a fixed-size output (the hash or digest). The same input always produces the same hash, but you cannot reverse the hash to get the original data. Used to verify integrity and store passwords.",
-    "eli5": "Like putting something through a meat grinder — you can always grind the same meat the same way, but you can't un-grind it back.",
-    "categories": ["Cryptography", "Security"],
-    "relevance": "Essential for understanding password security, digital signatures, and data integrity. Appears in Cryptography and Security modules."
+    "id": "dmz",
+    "term": "DMZ (Demilitarized Zone)",
+    "definition": "A network segment that sits between an internal trusted network and an untrusted external network (like the internet), typically hosting public-facing services such as web servers, so that a compromise there doesn't directly expose the internal network.",
+    "eli5": "A DMZ is like a lobby where visitors can meet staff without ever being let into the private offices in the back.",
+    "categories": [
+      "Networking",
+      "Security"
+    ],
+    "relevance": "Common network architecture topic in Security+ and network design courses."
   },
   {
-    "id": "malware",
-    "term": "Malware",
-    "definition": "Short for 'malicious software'. Any software intentionally designed to disrupt, damage, or gain unauthorized access to a computer system. Types include viruses, worms, ransomware, spyware, adware, and trojans.",
-    "eli5": "Software that pretends to be helpful (or hides completely) but is actually secretly doing something bad to your computer.",
-    "categories": ["Security", "General"],
-    "relevance": "Broad category covered in Security Fundamentals, Ethical Hacking, and Incident Response courses."
+    "id": "network-segmentation",
+    "term": "Network Segmentation",
+    "definition": "The practice of dividing a network into smaller isolated zones so that a breach in one segment doesn't automatically grant access to the rest of the network. Often implemented with VLANs, firewalls, or subnets.",
+    "eli5": "Like having separate locked sections on a ship — if one section floods, watertight doors stop the whole ship from sinking.",
+    "categories": [
+      "Networking",
+      "Security"
+    ],
+    "relevance": "A key defense-in-depth strategy covered in Security+ and network security architecture courses."
   },
   {
-    "id": "vlan",
-    "term": "VLAN (Virtual Local Area Network)",
-    "definition": "A logical grouping of network devices that behave as if they're on the same physical network, even if they're physically separated. VLANs segment network traffic for security and performance without requiring separate physical hardware.",
-    "eli5": "Like having different departments in an office building on the same floor but using different walkie-talkie channels so they don't overhear each other.",
-    "categories": ["Networking"],
-    "relevance": "Key topic in Network Administration and Network Engineering courses. Covered in Cisco CCNA certification."
+    "id": "mitm",
+    "term": "Man-in-the-Middle (MITM) Attack",
+    "definition": "An attack where a malicious actor secretly intercepts and possibly alters communication between two parties who believe they are communicating directly with each other.",
+    "eli5": "Like a mail carrier secretly opening your letters, reading them, resealing them, and sending them on — while you and your friend have no idea.",
+    "categories": [
+      "Networking",
+      "Security"
+    ],
+    "relevance": "Common exam topic in Security+ and CEH; frequently demonstrated in ethical hacking labs using tools like ARP spoofing."
   },
   {
-    "id": "phishing",
-    "term": "Phishing",
-    "definition": "A social engineering attack where attackers impersonate legitimate organizations via email, text, or fake websites to trick users into revealing sensitive information like passwords, credit card numbers, or personal data.",
-    "eli5": "Like someone pretending to be your bank and calling you to ask for your PIN — they sound official, but it's a trick.",
-    "categories": ["Security", "Social Engineering"],
-    "relevance": "Covered in Security Awareness, Ethical Hacking, and Incident Response. One of the most common real-world attack vectors."
+    "id": "dns-spoofing",
+    "term": "DNS Spoofing (DNS Cache Poisoning)",
+    "definition": "An attack that corrupts DNS records so that a domain name resolves to a malicious IP address instead of the legitimate one, redirecting victims to fake or harmful websites.",
+    "eli5": "Like swapping the street signs in a town so that everyone following directions to the bank ends up at a fake bank run by criminals instead.",
+    "categories": [
+      "Networking",
+      "Security"
+    ],
+    "relevance": "Covered in Network Security and Ethical Hacking courses alongside DNS fundamentals and phishing."
   },
   {
-    "id": "zero-day",
-    "term": "Zero-Day Vulnerability",
-    "definition": "A security flaw in software that is unknown to the vendor or has no available patch. Attackers who discover these vulnerabilities can exploit them before defenders have any chance to fix them. The name comes from having 'zero days' to prepare a defense.",
-    "eli5": "Finding a secret back door into a building that even the building owner doesn't know exists yet.",
-    "categories": ["Security", "Vulnerabilities"],
-    "relevance": "Important concept in Advanced Threat Intelligence, Vulnerability Management, and Malware Analysis courses."
+    "id": "threat-actor",
+    "term": "Threat Actor",
+    "definition": "An individual or group responsible for carrying out a cyberattack or posing a potential security risk, ranging from lone hackers and cybercriminal gangs to nation-states and insiders.",
+    "eli5": "A threat actor is just a fancy term for 'the person or group trying to break in,' whether that's a bored teenager or a government-funded hacking team.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "Foundational vocabulary used throughout threat intelligence, risk assessment, and Security+ coursework."
   },
   {
-    "id": "osi-model",
-    "term": "OSI Model",
-    "definition": "The Open Systems Interconnection model is a conceptual framework that describes how network communication works in 7 layers: Physical, Data Link, Network, Transport, Session, Presentation, and Application. Each layer has a specific role and communicates with the layers above and below it.",
-    "eli5": "Like the postal system — there are layers of work (writing the letter, putting it in an envelope, addressing it, sorting it, delivering it) that all have to happen for a message to get from one place to another.",
-    "categories": ["Networking", "General"],
-    "relevance": "Fundamental networking concept required for CompTIA Network+, CCNA, and all network-related certifications."
+    "id": "threat-intelligence",
+    "term": "Threat Intelligence",
+    "definition": "Evidence-based knowledge about existing or emerging threats — including attacker tactics, indicators, and motives — that organizations use to make informed security decisions.",
+    "eli5": "Threat intelligence is like a neighborhood watch newsletter that tells you which burglary tricks are trending nearby so you can lock the right doors.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "Central to SOC analyst and threat hunting roles; increasingly its own certification track (e.g., GCTI)."
   },
   {
-    "id": "tcp-ip",
-    "term": "TCP/IP",
-    "definition": "Transmission Control Protocol/Internet Protocol — the foundational suite of communication protocols that govern how data is transmitted across the internet. TCP ensures reliable, ordered delivery of data. IP handles addressing and routing.",
-    "eli5": "TCP/IP is the language computers use to talk to each other over the internet. TCP makes sure the message arrives correctly; IP makes sure it goes to the right address.",
-    "categories": ["Networking"],
-    "relevance": "Essential foundation for all networking courses and certifications (Network+, CCNA, Security+)."
+    "id": "attack-surface",
+    "term": "Attack Surface",
+    "definition": "The total sum of all points where an unauthorized user could try to enter or extract data from a system — including open ports, exposed applications, user accounts, and APIs.",
+    "eli5": "Your attack surface is every door, window, and vent an intruder could use to get into your house — the more entry points, the bigger the risk.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "Central concept in risk assessment, penetration testing scoping, and vulnerability management."
   },
   {
-    "id": "port",
-    "term": "Port",
-    "definition": "A virtual point where network connections start and end. Ports are numbered 0–65535 and help identify which application should receive network traffic. Well-known ports include 80 (HTTP), 443 (HTTPS), 22 (SSH), and 3306 (MySQL).",
-    "eli5": "If an IP address is like a building's street address, then port numbers are like apartment numbers inside that building — they tell you exactly which service to deliver the data to.",
-    "categories": ["Networking"],
-    "relevance": "Critical knowledge for Network+ and Security+. Frequently tested in firewall configuration and network scanning labs."
+    "id": "attack-vector",
+    "term": "Attack Vector",
+    "definition": "The specific path or method a threat actor uses to gain unauthorized access to a system, such as a phishing email, an unpatched vulnerability, or a stolen password.",
+    "eli5": "If the attack surface is all the possible doors, the attack vector is the exact door and method the attacker actually used to get in.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "Used constantly in incident reports, threat modeling, and Security+ exam scenarios."
   },
   {
-    "id": "dns",
-    "term": "DNS (Domain Name System)",
-    "definition": "The system that translates human-readable domain names (like www.google.com) into IP addresses that computers use to communicate. Without DNS, you'd need to remember IP addresses for every website you visit.",
-    "eli5": "DNS is like the internet's phone book — you look up a name (google.com) and it gives you the number (IP address) to call.",
-    "categories": ["Networking"],
-    "relevance": "Covered in all networking courses. DNS attacks like DNS spoofing and cache poisoning appear in Security+ and ethical hacking content."
+    "id": "defense-in-depth",
+    "term": "Defense in Depth",
+    "definition": "A layered security strategy that uses multiple, overlapping controls (firewalls, encryption, access control, monitoring, etc.) so that if one layer fails, others still protect the system.",
+    "eli5": "Like a castle with a moat, a wall, guards, and a locked door — if an attacker gets past one layer, there are still more standing in the way.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "A core security architecture principle tested throughout Security+ and enterprise security design courses."
   },
   {
-    "id": "social-engineering",
-    "term": "Social Engineering",
-    "definition": "Psychological manipulation of people into performing actions or divulging confidential information. Rather than exploiting technical vulnerabilities, social engineering exploits human psychology, trust, and authority to bypass security controls.",
-    "eli5": "Tricking people instead of hacking computers. Like pretending to be IT support to get someone to give you their password.",
-    "categories": ["Security", "Social Engineering"],
-    "relevance": "Key topic in Security Awareness training and Ethical Hacking. Often considered the most effective attack vector because it bypasses technical defenses."
+    "id": "patch-management",
+    "term": "Patch Management",
+    "definition": "The process of identifying, testing, and deploying software updates that fix security vulnerabilities and bugs, done systematically to reduce an organization's exposure to known exploits.",
+    "eli5": "Patch management is like regularly fixing small cracks in a wall before someone finds them and breaks the whole thing open.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "A day-to-day responsibility for IT and security teams; directly tied to vulnerability management and CVE tracking."
   },
   {
-    "id": "authentication",
-    "term": "Authentication",
-    "definition": "The process of verifying that a user, device, or service is who or what it claims to be. Common factors include something you know, have, or are.",
-    "eli5": "Authentication is the security check that asks, 'Are you really you?' before letting you in.",
-    "categories": ["Security", "General"],
-    "relevance": "A core concept in identity and access management, web security, operating systems, and Security+ coursework."
+    "id": "honeypot",
+    "term": "Honeypot",
+    "definition": "A decoy system or network deliberately set up to look vulnerable, used to lure attackers so defenders can study their techniques or detect intrusions early.",
+    "eli5": "A honeypot is a fake unlocked car left in a parking lot with a hidden camera, just to see who tries to break in and how.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "Common tool in threat research, SOC operations, and used in Security+ and CEH curricula."
   },
   {
-    "id": "authorization",
-    "term": "Authorization",
-    "definition": "The process of deciding what an authenticated user, device, or service is allowed to access or do.",
-    "eli5": "Authentication checks your identity; authorization checks which rooms you are allowed to enter.",
-    "categories": ["Security", "Web Security"],
-    "relevance": "Important for access control, secure APIs, databases, cloud security, and the OWASP Top 10."
+    "id": "sandboxing",
+    "term": "Sandboxing",
+    "definition": "The practice of running untrusted code or files in an isolated environment, separate from the main system, so that if it turns out to be malicious it can't cause real damage.",
+    "eli5": "A sandbox is like letting a stranger play in a fenced-in area instead of your whole house, just in case they misbehave.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "Core technique in malware analysis, browser security, and application security testing."
   },
   {
-    "id": "mfa",
-    "term": "MFA (Multi-Factor Authentication)",
-    "definition": "An authentication method that requires two or more different factors to verify a user's identity, such as a password plus a code from a phone or a hardware security key.",
-    "eli5": "Instead of relying on one lock, MFA asks for two different proofs before opening the door.",
-    "categories": ["Security", "Social Engineering"],
-    "relevance": "A practical defense against stolen passwords and a common topic in security awareness, identity management, and certification exams."
+    "id": "siem",
+    "term": "SIEM (Security Information and Event Management)",
+    "definition": "A platform that collects, aggregates, and analyzes log and event data from across an organization's systems in real time, helping security teams detect and respond to threats.",
+    "eli5": "A SIEM is like a security guard watching hundreds of camera feeds at once and flashing an alert the moment something looks suspicious.",
+    "categories": [
+      "Security",
+      "Career"
+    ],
+    "relevance": "The core tool of a SOC analyst's daily job; heavily featured in Security+ and hands-on SOC training."
   },
   {
-    "id": "cia-triad",
-    "term": "CIA Triad",
-    "definition": "A security model built around confidentiality, integrity, and availability. It helps defenders evaluate whether information is protected from unauthorized access, unauthorized changes, and harmful disruption.",
-    "eli5": "The CIA triad asks whether data is kept secret, kept correct, and available when people need it.",
-    "categories": ["Security", "General"],
-    "relevance": "A foundational framework used in security policies, risk assessments, incident analysis, and Security+ coursework."
+    "id": "kill-chain",
+    "term": "Cyber Kill Chain",
+    "definition": "A model developed by Lockheed Martin that breaks a cyberattack into stages — reconnaissance, weaponization, delivery, exploitation, installation, command and control, and actions on objectives — to help defenders understand and disrupt attacks at each phase.",
+    "eli5": "The kill chain is like the step-by-step plan a burglar follows to rob a house — scope it out, prepare tools, break in, and take the loot. Knowing each step helps you stop it earlier.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "Widely taught framework in threat intelligence and incident response coursework, often paired with MITRE ATT&CK."
   },
   {
-    "id": "least-privilege",
-    "term": "Principle of Least Privilege",
-    "definition": "The practice of giving users, applications, and services only the permissions they need to perform their tasks, and no more.",
-    "eli5": "Give each person only the keys needed for their job, not a master key to the whole building.",
-    "categories": ["Security", "General"],
-    "relevance": "Used in operating systems, databases, cloud IAM, application security, and defensive architecture."
+    "id": "mitre-attack",
+    "term": "MITRE ATT&CK",
+    "definition": "A publicly available knowledge base that catalogs real-world attacker tactics, techniques, and procedures (TTPs), organized into a matrix used by defenders to understand and detect adversary behavior.",
+    "eli5": "MITRE ATT&CK is like a playbook of every known trick criminals use to break into houses, organized so security guards can study and prepare for each one.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "An industry-standard reference used in SOC operations, threat hunting, red teaming, and detection engineering."
   },
   {
-    "id": "ids-ips",
-    "term": "IDS / IPS",
-    "definition": "An Intrusion Detection System (IDS) monitors activity and raises alerts about suspicious behavior. An Intrusion Prevention System (IPS) can also block or stop detected activity.",
-    "eli5": "An IDS is a security alarm; an IPS is an alarm that can also lock the door when it spots trouble.",
-    "categories": ["Networking", "Security"],
-    "relevance": "Common in network defense labs and important for understanding monitoring, detection engineering, and Security+ concepts."
+    "id": "ioc",
+    "term": "Indicator of Compromise (IOC)",
+    "definition": "A piece of forensic evidence — such as a malicious file hash, IP address, or unusual login pattern — that suggests a system has been breached or is under attack.",
+    "eli5": "An IOC is a clue, like a muddy footprint on the carpet, that tells you someone who shouldn't be there has been in the house.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "Everyday vocabulary in SOC analyst work, threat hunting, and digital forensics investigations."
   },
   {
-    "id": "cve",
-    "term": "CVE (Common Vulnerabilities and Exposures)",
-    "definition": "A public identification system for known cybersecurity vulnerabilities. Each listed issue receives a unique identifier, such as CVE-2024-12345, so researchers and defenders can discuss and track it consistently.",
-    "eli5": "A CVE is a tracking number for a known software security problem.",
-    "categories": ["Security", "Vulnerabilities"],
-    "relevance": "Used in vulnerability scanning, patch management, threat intelligence, penetration testing, and security advisories."
+    "id": "zero-trust",
+    "term": "Zero Trust",
+    "definition": "A security model based on the principle 'never trust, always verify' — no user or device is automatically trusted, even if it's already inside the network perimeter, and every access request must be continuously authenticated and authorized.",
+    "eli5": "Zero trust means checking everyone's ID badge at every single door in the building, not just at the front entrance.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "A major modern security architecture trend, increasingly required knowledge for enterprise security and cloud security roles."
   },
   {
-    "id": "vulnerability",
-    "term": "Vulnerability",
-    "definition": "A weakness in software, hardware, configuration, or process that could be exploited to harm confidentiality, integrity, or availability.",
-    "eli5": "A vulnerability is a weak point that an attacker might use to get past a security control.",
-    "categories": ["Security", "Vulnerabilities"],
-    "relevance": "A basic concept for risk assessment, secure coding, vulnerability management, and ethical hacking courses."
+    "id": "insider-threat",
+    "term": "Insider Threat",
+    "definition": "A security risk that originates from within an organization — such as a current or former employee, contractor, or partner — who has legitimate access but misuses it, whether maliciously or accidentally.",
+    "eli5": "An insider threat is like a trusted family member who has a house key and either loses it, sells it, or uses it to steal something themselves.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "A major focus of security awareness programs, access control design, and incident response planning."
   },
   {
-    "id": "incident-response",
-    "term": "Incident Response",
-    "definition": "The organized process of preparing for, detecting, containing, investigating, recovering from, and learning from a cybersecurity incident.",
-    "eli5": "Incident response is the emergency plan for finding out what happened, stopping the damage, and making sure it does not happen again.",
-    "categories": ["Security", "Career"],
-    "relevance": "Central to SOC analyst, digital forensics, threat hunting, and security operations coursework."
+    "id": "supply-chain-attack",
+    "term": "Supply Chain Attack",
+    "definition": "An attack that targets a trusted third-party vendor, software update, or component in order to compromise an organization indirectly, rather than attacking it directly.",
+    "eli5": "Instead of breaking into a store, the thief poisons the delivery truck bringing goods to the store, so the poison spreads to everyone who buys from it.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "Increasingly critical topic after high-profile incidents; covered in risk management and vendor security coursework."
   },
   {
-    "id": "ssh",
-    "term": "SSH (Secure Shell)",
-    "definition": "A protocol that provides encrypted remote login and command execution over a network. SSH can also securely transfer files and create tunnels for other traffic.",
-    "eli5": "SSH is a locked, private terminal session to another computer over a network.",
-    "categories": ["Networking", "Security"],
-    "relevance": "Essential for Linux administration, cloud servers, Git authentication, and cybersecurity lab environments."
+    "id": "hardening",
+    "term": "System Hardening",
+    "definition": "The process of reducing a system's attack surface by disabling unnecessary services, closing unused ports, applying secure configurations, and removing default accounts or credentials.",
+    "eli5": "Hardening a system is like childproofing a house — removing anything unnecessary that could be misused and locking down every loose cabinet.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "A practical skill tested in Security+ and used constantly in system administration and cloud security."
   },
   {
-    "id": "digital-signature",
-    "term": "Digital Signature",
-    "definition": "A cryptographic proof that verifies who signed digital data and whether the data was changed after signing. It uses a private key to sign and a public key to verify.",
-    "eli5": "A digital signature is like a tamper-evident signature that proves both who approved a message and that nobody changed it.",
-    "categories": ["Cryptography", "Security"],
-    "relevance": "Used in software updates, certificates, secure email, code signing, and public-key infrastructure."
+    "id": "air-gap",
+    "term": "Air Gap",
+    "definition": "A security measure that physically isolates a computer or network from any other network, including the internet, so there is no possible electronic path for remote attackers to reach it.",
+    "eli5": "An air-gapped computer is like a diary kept in a locked room with no phone line or mail slot — the only way in is to physically walk up to it.",
+    "categories": [
+      "Security",
+      "Networking"
+    ],
+    "relevance": "Used to protect highly sensitive systems like industrial control systems and classified networks; relevant to critical infrastructure security."
   },
   {
-    "id": "public-key-cryptography",
-    "term": "Public-Key Cryptography",
-    "definition": "A cryptographic system that uses a mathematically related public key and private key. The public key can be shared, while the private key must be protected.",
-    "eli5": "Anyone can use your public padlock to lock a box for you, but only your private key can open it.",
-    "categories": ["Cryptography", "Security"],
-    "relevance": "Supports HTTPS, SSH, digital signatures, secure email, certificates, and many modern authentication systems."
+    "id": "apt",
+    "term": "APT (Advanced Persistent Threat)",
+    "definition": "A sophisticated, well-resourced threat actor — often nation-state sponsored — that infiltrates a network and remains undetected for a long period, typically to steal data or conduct espionage rather than cause immediate damage.",
+    "eli5": "An APT is like a spy who sneaks into a building and quietly lives in the walls for months, gathering secrets instead of just smashing and grabbing.",
+    "categories": [
+      "Security",
+      "Vulnerabilities"
+    ],
+    "relevance": "Central topic in threat intelligence and national security-focused cybersecurity coursework."
+  },
+  {
+    "id": "botnet",
+    "term": "Botnet",
+    "definition": "A network of compromised, internet-connected devices (bots) that are controlled remotely by an attacker, typically without the device owners' knowledge, and used to carry out large-scale attacks such as DDoS or spam campaigns.",
+    "eli5": "A botnet is like an army of hijacked robot puppets, each one secretly controlled by the same puppet master to attack a target all at once.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "Fundamental to understanding DDoS attacks and malware propagation; frequently discussed in threat intelligence courses."
+  },
+  {
+    "id": "c2",
+    "term": "Command and Control (C2)",
+    "definition": "The infrastructure and communication channel attackers use to remotely control compromised systems, issue commands, and receive stolen data after a system has been infected.",
+    "eli5": "C2 is the walkie-talkie channel a hacker uses to keep giving orders to the malware they've already planted on your computer.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "Key concept in malware analysis, incident response, and detection engineering — many defenses focus on spotting C2 traffic."
+  },
+  {
+    "id": "rootkit",
+    "term": "Rootkit",
+    "definition": "A type of malware designed to gain and maintain privileged (root/administrator) access to a system while actively hiding its own presence from the operating system and security tools.",
+    "eli5": "A rootkit is like a burglar who not only breaks in but also rewires the security cameras so they never show him on the footage.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "Advanced topic in malware analysis and digital forensics; challenging to detect and remove."
+  },
+  {
+    "id": "keylogger",
+    "term": "Keylogger",
+    "definition": "A type of spyware that records every keystroke a user types, often used to steal passwords, credit card numbers, and other sensitive information without the victim's knowledge.",
+    "eli5": "A keylogger is like a hidden camera pointed at your keyboard, silently writing down everything you type, including your passwords.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "Common malware type covered in Security+ and used in social engineering / phishing attack chains."
+  },
+  {
+    "id": "ransomware",
+    "term": "Ransomware",
+    "definition": "Malware that encrypts a victim's files or locks them out of their system, then demands payment (usually cryptocurrency) in exchange for restoring access.",
+    "eli5": "Ransomware is like someone breaking into your house, locking all your stuff in a safe, and demanding money for the combination.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "One of the most financially damaging and widely discussed threats today; central to incident response and business continuity planning."
+  },
+  {
+    "id": "trojan",
+    "term": "Trojan Horse",
+    "definition": "Malware disguised as legitimate, harmless software that tricks users into installing it, after which it can perform malicious actions such as opening backdoors or stealing data.",
+    "eli5": "Just like the ancient wooden horse, a trojan looks like a helpful gift but has something harmful hidden inside once it's let through the gate.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "A fundamental malware category covered in every introductory security course."
+  },
+  {
+    "id": "worm",
+    "term": "Worm",
+    "definition": "A type of self-replicating malware that spreads automatically across networks without needing to attach itself to another program or require human action to propagate.",
+    "eli5": "A worm is like a contagious cold that spreads from computer to computer all on its own, without anyone having to click anything.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "Fundamental malware category, distinguished from viruses in Security+ and malware analysis coursework."
+  },
+  {
+    "id": "logic-bomb",
+    "term": "Logic Bomb",
+    "definition": "Malicious code that lies dormant inside a system until a specific condition or trigger is met — such as a certain date or user action — at which point it activates and executes its payload.",
+    "eli5": "A logic bomb is like a landmine hidden in software that only explodes when someone steps on a very specific trigger, like a certain date.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "Notable in insider threat cases; covered in malware analysis and secure coding discussions."
+  },
+  {
+    "id": "fileless-malware",
+    "term": "Fileless Malware",
+    "definition": "Malware that operates entirely in a system's memory without writing traditional files to disk, often abusing legitimate tools (like PowerShell) to evade signature-based antivirus detection.",
+    "eli5": "Fileless malware is like a ghost that never leaves fingerprints on paper — it lives only in the air of the room, making it much harder to find.",
+    "categories": [
+      "Security",
+      "Vulnerabilities"
+    ],
+    "relevance": "A growing challenge in endpoint security and a common topic in advanced malware analysis and EDR coursework."
+  },
+  {
+    "id": "ddos",
+    "term": "DDoS (Distributed Denial of Service)",
+    "definition": "An attack that overwhelms a target system, service, or network with traffic from many distributed sources simultaneously, making it slow or completely unavailable to legitimate users.",
+    "eli5": "A DDoS attack is like thousands of people calling one pizza shop's phone line at once so real customers can never get through.",
+    "categories": [
+      "Security",
+      "Networking"
+    ],
+    "relevance": "Common real-world attack type covered in Security+ and Network+; relevant to availability, one leg of the CIA triad."
+  },
+  {
+    "id": "buffer-overflow",
+    "term": "Buffer Overflow",
+    "definition": "A vulnerability where a program writes more data to a fixed-size memory buffer than it can hold, causing the excess data to overwrite adjacent memory — which attackers can exploit to crash a program or execute arbitrary code.",
+    "eli5": "A buffer overflow is like pouring more water into a cup than it can hold, so it spills over and messes up everything next to it — except here, the spill can rewrite a program's instructions.",
+    "categories": [
+      "Security",
+      "Vulnerabilities"
+    ],
+    "relevance": "A classic and foundational vulnerability class covered in secure coding, exploit development, and CEH training."
+  },
+  {
+    "id": "privilege-escalation",
+    "term": "Privilege Escalation",
+    "definition": "An attack technique where an attacker who has gained limited access to a system exploits a flaw to gain higher-level permissions, such as moving from a standard user account to administrator or root.",
+    "eli5": "Privilege escalation is like sneaking into a building as a visitor and then finding a way to steal the manager's master key.",
+    "categories": [
+      "Security",
+      "Vulnerabilities"
+    ],
+    "relevance": "Key phase in the attack lifecycle, heavily featured in penetration testing and CTF (capture the flag) exercises."
+  },
+  {
+    "id": "lateral-movement",
+    "term": "Lateral Movement",
+    "definition": "Techniques attackers use to move through a network after an initial compromise, exploring and accessing additional systems and accounts to expand their foothold.",
+    "eli5": "Lateral movement is like a burglar who gets into one room of a house and then quietly moves from room to room, unlocking more doors as they go.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "A key stage in the MITRE ATT&CK framework and cyber kill chain; central to network segmentation defenses."
+  },
+  {
+    "id": "data-exfiltration",
+    "term": "Data Exfiltration",
+    "definition": "The unauthorized transfer of data out of a system or network, typically the final goal of an attacker after gaining access and locating valuable information.",
+    "eli5": "Exfiltration is the moment the burglar actually carries the stolen goods out the door and away from the house.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "Final stage of many attack chains; central to DLP (data loss prevention) tooling and incident response."
+  },
+  {
+    "id": "brute-force",
+    "term": "Brute Force Attack",
+    "definition": "An attack method that systematically tries every possible combination of characters or values (such as passwords) until the correct one is found.",
+    "eli5": "A brute force attack is like trying every single key on a giant keyring until one finally opens the lock.",
+    "categories": [
+      "Security",
+      "Vulnerabilities"
+    ],
+    "relevance": "Foundational attack technique covered in every password security and Security+ discussion."
+  },
+  {
+    "id": "rainbow-table",
+    "term": "Rainbow Table",
+    "definition": "A precomputed table of hash values and their corresponding plaintext inputs, used to quickly reverse password hashes without having to compute them from scratch during an attack.",
+    "eli5": "A rainbow table is like a giant pre-written cheat sheet that instantly tells you the original word for a scrambled code, so you don't have to guess it letter by letter.",
+    "categories": [
+      "Cryptography",
+      "Security"
+    ],
+    "relevance": "Explains why salting passwords matters; commonly tested alongside hashing in Security+ and CEH."
+  },
+  {
+    "id": "credential-stuffing",
+    "term": "Credential Stuffing",
+    "definition": "An attack that uses lists of usernames and passwords leaked from one breach to automatically try logging into other, unrelated services, exploiting the fact that many people reuse passwords.",
+    "eli5": "Credential stuffing is like a thief taking a stolen keyring and trying every key on every door in the neighborhood to see which ones happen to fit.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "A leading cause of account takeovers today, and a strong argument for MFA and unique passwords."
+  },
+  {
+    "id": "password-spraying",
+    "term": "Password Spraying",
+    "definition": "An attack that tries a small number of commonly used passwords against a large number of different accounts, avoiding lockouts by not repeatedly guessing on any single account.",
+    "eli5": "Instead of trying every key on one lock, password spraying tries one common key on thousands of different locks, hoping a few happen to match.",
+    "categories": [
+      "Security"
+    ],
+    "relevance": "Common real-world technique that evades traditional account lockout defenses; covered in identity security modules."
+  },
+  {
+    "id": "session-hijacking",
+    "term": "Session Hijacking",
+    "definition": "An attack where a threat actor steals or predicts a valid session token to impersonate a legitimate, already-authenticated user without needing their username or password.",
+    "eli5": "Session hijacking is like stealing someone's wristband at a concert after they've already been let in, so you can walk around pretending to be them.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "Common web application vulnerability covered in OWASP Top 10 discussions and web security courses."
+  },
+  {
+    "id": "clickjacking",
+    "term": "Clickjacking",
+    "definition": "An attack that tricks users into clicking something different from what they perceive, often by layering an invisible malicious element over a legitimate-looking page.",
+    "eli5": "Clickjacking is like putting an invisible extra button over a picture of a cute cat, so when you try to click the cat, you actually trigger something completely different.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "Common web application vulnerability discussed in OWASP resources and web security courses."
+  },
+  {
+    "id": "csrf",
+    "term": "CSRF (Cross-Site Request Forgery)",
+    "definition": "An attack that tricks a logged-in user's browser into unknowingly submitting a malicious request to a website where they're authenticated, performing actions the user never intended.",
+    "eli5": "CSRF is like tricking someone into signing a blank check by hiding it inside a form they think is harmless, using an authority they already have.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "A staple of the OWASP Top 10 and web application security coursework, often paired with XSS."
+  },
+  {
+    "id": "directory-traversal",
+    "term": "Directory Traversal (Path Traversal)",
+    "definition": "A vulnerability that allows an attacker to access files and directories outside of a web application's intended root folder by manipulating file path input, often using sequences like '../'.",
+    "eli5": "Directory traversal is like being asked for a book from a specific shelf, but instead saying 'go back three rooms and grab whatever's there' to reach files you were never supposed to see.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "Common web vulnerability tested in penetration testing labs and covered in the OWASP Top 10."
+  },
+  {
+    "id": "ssrf",
+    "term": "SSRF (Server-Side Request Forgery)",
+    "definition": "A vulnerability that allows an attacker to trick a server into making unauthorized requests on its behalf, potentially reaching internal systems that aren't normally exposed to the outside world.",
+    "eli5": "SSRF is like convincing the front desk of a building to walk into the back offices and grab something for you, even though you're not allowed back there yourself.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "A rising vulnerability class in cloud environments, featured in the OWASP Top 10 and modern penetration testing."
+  },
+  {
+    "id": "waf",
+    "term": "WAF (Web Application Firewall)",
+    "definition": "A security control that filters, monitors, and blocks malicious HTTP traffic to and from a web application, protecting against attacks like SQL injection and XSS at the application layer.",
+    "eli5": "A WAF is like a security guard specifically trained to inspect every visitor to a website's front door, not just check IDs like a regular firewall would.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "Common defensive tool covered in web application security and Security+ coursework."
+  },
+  {
+    "id": "broken-access-control",
+    "term": "Broken Access Control",
+    "definition": "A vulnerability category where an application fails to properly enforce restrictions on what authenticated users are allowed to do, letting them access data or functions they shouldn't be permitted to reach.",
+    "eli5": "Broken access control is like a hotel key card that's supposed to only open your room but accidentally opens every room in the building.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "Consistently ranked the #1 risk on the OWASP Top 10; a core topic in web application security."
+  },
+  {
+    "id": "command-injection",
+    "term": "Command Injection",
+    "definition": "A vulnerability that lets an attacker execute arbitrary operating system commands on a server by inserting malicious input into a vulnerable application that passes user input to a system shell.",
+    "eli5": "Command injection is like writing a hidden extra instruction inside a form that gets accidentally read out loud and obeyed by the computer running the show.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "A high-severity vulnerability class tested heavily in penetration testing and secure coding courses."
+  },
+  {
+    "id": "security-misconfiguration",
+    "term": "Security Misconfiguration",
+    "definition": "A vulnerability that arises from insecure default settings, incomplete configurations, open cloud storage, verbose error messages, or unnecessary features left enabled in a system or application.",
+    "eli5": "Security misconfiguration is like moving into a new house and forgetting to change the locks, close the garage, or turn off the spare key hidden under the mat.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "One of the most common real-world root causes of breaches; a fixture of the OWASP Top 10."
+  },
+  {
+    "id": "xxe",
+    "term": "XXE (XML External Entity) Injection",
+    "definition": "A vulnerability that occurs when an application processes XML input containing a reference to an external entity, allowing attackers to read local files, perform SSRF, or cause denial of service.",
+    "eli5": "XXE is like a form letter template that, if you sneak in a special reference, will secretly go fetch and print out private files from the printer's own filing cabinet.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "A notable OWASP Top 10 vulnerability class, particularly relevant to applications that parse XML data."
+  },
+  {
+    "id": "tls-ssl",
+    "term": "TLS/SSL",
+    "definition": "Transport Layer Security (and its predecessor, Secure Sockets Layer) are cryptographic protocols that encrypt data in transit between a client and a server, forming the basis of HTTPS.",
+    "eli5": "TLS/SSL is the locked, private tunnel your browser builds to a website so that no one snooping on the connection in between can read what's inside.",
+    "categories": [
+      "Cryptography",
+      "Security"
+    ],
+    "relevance": "Foundational to web security, covered extensively in Security+ and any networking or cryptography course."
+  },
+  {
+    "id": "certificate-authority",
+    "term": "Certificate Authority (CA)",
+    "definition": "A trusted organization that issues digital certificates, verifying the identity of websites and other entities so that users and browsers can trust who they're really communicating with.",
+    "eli5": "A CA is like a notary public who stamps official ID cards, so when you see the stamp, you know it's been verified by someone trustworthy.",
+    "categories": [
+      "Cryptography",
+      "Security"
+    ],
+    "relevance": "A foundational concept for understanding HTTPS, PKI, and digital certificates."
+  },
+  {
+    "id": "pki",
+    "term": "PKI (Public Key Infrastructure)",
+    "definition": "The overall system of policies, roles, hardware, and procedures needed to create, manage, distribute, and revoke digital certificates and manage public-key encryption.",
+    "eli5": "PKI is the whole administrative system behind issuing, checking, and canceling those digital ID badges (certificates) that prove who's who online.",
+    "categories": [
+      "Cryptography",
+      "Security"
+    ],
+    "relevance": "Underpins HTTPS, digital signatures, and secure email; a core topic in Security+ and cryptography coursework."
+  },
+  {
+    "id": "symmetric-encryption",
+    "term": "Symmetric Encryption",
+    "definition": "An encryption method that uses the same single key for both encrypting and decrypting data, making it fast but requiring the key to be securely shared between parties beforehand.",
+    "eli5": "Symmetric encryption is like a single lockbox key — whoever locked it and whoever unlocks it must use the exact same physical key.",
+    "categories": [
+      "Cryptography",
+      "Security"
+    ],
+    "relevance": "A foundational cryptography concept, often contrasted with asymmetric encryption in Security+ coursework."
+  },
+  {
+    "id": "asymmetric-encryption",
+    "term": "Asymmetric Encryption",
+    "definition": "An encryption method that uses a mathematically linked pair of keys — a public key for encrypting and a private key for decrypting — eliminating the need to share a single secret key in advance.",
+    "eli5": "Asymmetric encryption is like a mailbox anyone can drop a letter into (public key), but only the owner with the private key can open it and read what's inside.",
+    "categories": [
+      "Cryptography",
+      "Security"
+    ],
+    "relevance": "Underpins public-key cryptography, digital signatures, and HTTPS; core Security+ and cryptography content."
+  },
+  {
+    "id": "salt",
+    "term": "Salt (Cryptography)",
+    "definition": "Random data added to a password before it's hashed, ensuring that even identical passwords produce different hash outputs, which defeats precomputed attacks like rainbow tables.",
+    "eli5": "Adding salt is like mixing a unique secret spice into everyone's recipe before baking, so even two identical cakes come out tasting different — and no cheat-sheet recipe book works anymore.",
+    "categories": [
+      "Cryptography",
+      "Security"
+    ],
+    "relevance": "Directly relevant to secure password storage practices and frequently tested alongside hashing in Security+."
+  },
+  {
+    "id": "steganography",
+    "term": "Steganography",
+    "definition": "The practice of hiding secret data within another, non-secret file or message — such as embedding text inside an image — so that the existence of the hidden data itself is concealed, not just its content.",
+    "eli5": "Steganography is like hiding a secret note inside a painting's brushstrokes — anyone glancing at the painting just sees art, with no idea a message is hidden there at all.",
+    "categories": [
+      "Cryptography",
+      "Security"
+    ],
+    "relevance": "Distinguished from encryption in cryptography courses; relevant to forensics and CTF challenges."
+  },
+  {
+    "id": "sso",
+    "term": "Single Sign-On (SSO)",
+    "definition": "An authentication system that allows a user to log in once and gain access to multiple independent applications or services without needing to log in separately to each one.",
+    "eli5": "SSO is like one wristband at an amusement park that gets you onto every ride, instead of needing a separate ticket for each one.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "Widely used in enterprise identity management; relevant to OAuth, SAML, and IAM coursework."
+  },
+  {
+    "id": "oauth",
+    "term": "OAuth",
+    "definition": "An open standard authorization protocol that allows a user to grant a third-party application limited access to their resources on another service, without sharing their actual password.",
+    "eli5": "OAuth is like giving a valet a special key that only starts your car and opens the trunk, instead of handing over your entire keyring with your house key on it too.",
+    "categories": [
+      "Security",
+      "Web Security"
+    ],
+    "relevance": "Used constantly in modern app development ('Sign in with Google/Facebook'); important for API and web security coursework."
+  },
+  {
+    "id": "rbac",
+    "term": "RBAC (Role-Based Access Control)",
+    "definition": "An access control model that grants permissions based on a user's assigned role within an organization (such as 'admin' or 'HR staff'), rather than assigning permissions to each individual person separately.",
+    "eli5": "RBAC is like giving out uniforms — everyone wearing the 'manager' uniform automatically gets manager access, instead of custom-fitting rules for every single employee.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "Widely implemented access control model, covered in identity and access management and Security+ courses."
+  },
+  {
+    "id": "acl",
+    "term": "ACL (Access Control List)",
+    "definition": "A list of rules attached to a resource (like a file, folder, or router) that specifies exactly which users, groups, or systems are allowed or denied specific types of access.",
+    "eli5": "An ACL is like a guest list posted on a door, spelling out exactly who's allowed in and what they're allowed to do once inside.",
+    "categories": [
+      "Security",
+      "Networking"
+    ],
+    "relevance": "Used in both file system permissions and network device configuration; covered in Network+ and Security+."
+  },
+  {
+    "id": "jwt",
+    "term": "JWT (JSON Web Token)",
+    "definition": "A compact, digitally signed token format used to securely transmit information between parties, commonly used to represent an authenticated user's identity and claims in web applications and APIs.",
+    "eli5": "A JWT is like a sealed, tamper-evident wristband that proves who you are and what you're allowed to do, which you show at each new checkpoint instead of proving your identity all over again.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "Extremely common in modern API authentication; important for web security and API security coursework."
+  },
+  {
+    "id": "abac",
+    "term": "ABAC (Attribute-Based Access Control)",
+    "definition": "An access control model that grants or denies access based on a combination of attributes — such as user department, resource sensitivity, location, or time of day — rather than fixed roles alone.",
+    "eli5": "ABAC is like a bouncer who checks several things at once — your age, your outfit, and the time of night — before deciding whether you get in, instead of just checking one simple rule.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "A more flexible alternative to RBAC, increasingly relevant in cloud IAM and zero trust architectures."
+  },
+  {
+    "id": "spear-phishing",
+    "term": "Spear Phishing",
+    "definition": "A highly targeted phishing attack aimed at a specific individual or organization, using personalized details to appear more convincing than a generic phishing email.",
+    "eli5": "Spear phishing is like a scam letter written just for you, using your real name, job, and details about your life, instead of a generic mass-mailed trick.",
+    "categories": [
+      "Security",
+      "Social Engineering"
+    ],
+    "relevance": "A leading cause of real-world breaches; covered in security awareness training and social engineering coursework."
+  },
+  {
+    "id": "whaling",
+    "term": "Whaling",
+    "definition": "A form of spear phishing that specifically targets high-profile individuals within an organization, such as executives or senior leaders, often to authorize fraudulent payments or leak sensitive data.",
+    "eli5": "Whaling is spear phishing aimed at the biggest fish in the pond — like tricking the CEO instead of a random employee.",
+    "categories": [
+      "Security",
+      "Social Engineering"
+    ],
+    "relevance": "Increasingly common in business email compromise (BEC) scams; a key topic in executive security awareness."
+  },
+  {
+    "id": "vishing",
+    "term": "Vishing (Voice Phishing)",
+    "definition": "A social engineering attack conducted over the phone, where an attacker impersonates a trusted entity to trick a victim into revealing sensitive information or taking a harmful action.",
+    "eli5": "Vishing is phishing over the phone — like someone calling and pretending to be your bank to get you to read out your card number.",
+    "categories": [
+      "Security",
+      "Social Engineering"
+    ],
+    "relevance": "Common attack vector covered in security awareness training, especially with the rise of AI voice cloning."
+  },
+  {
+    "id": "smishing",
+    "term": "Smishing (SMS Phishing)",
+    "definition": "A social engineering attack delivered via text message, tricking victims into clicking malicious links or providing sensitive information through fake texts.",
+    "eli5": "Smishing is phishing delivered by text message — like a fake 'your package couldn't be delivered' text with a scam link attached.",
+    "categories": [
+      "Security",
+      "Social Engineering"
+    ],
+    "relevance": "A growing attack vector as mobile usage increases; covered in security awareness and mobile security training."
+  },
+  {
+    "id": "pretexting",
+    "term": "Pretexting",
+    "definition": "A social engineering technique where an attacker fabricates a false scenario or identity (a pretext) to manipulate a victim into divulging information or granting access.",
+    "eli5": "Pretexting is making up a believable fake story — like pretending to be a new IT technician — to convince someone to let their guard down.",
+    "categories": [
+      "Security",
+      "Social Engineering"
+    ],
+    "relevance": "A foundational social engineering technique, often combined with vishing and phishing in real-world attacks."
+  },
+  {
+    "id": "tailgating",
+    "term": "Tailgating (Piggybacking)",
+    "definition": "A physical social engineering technique where an unauthorized person follows an authorized employee through a secured door or checkpoint without using their own credentials.",
+    "eli5": "Tailgating is sneaking into a locked building by casually walking in right behind someone who has a real key card, before the door closes.",
+    "categories": [
+      "Security",
+      "Social Engineering"
+    ],
+    "relevance": "A common physical security weakness covered in security awareness training and physical penetration testing."
+  },
+  {
+    "id": "wpa3",
+    "term": "WPA3 (Wi-Fi Protected Access 3)",
+    "definition": "The current generation of Wi-Fi security protocol, offering stronger encryption and better protection against offline password-guessing attacks than its predecessors WPA and WPA2.",
+    "eli5": "WPA3 is the newest, strongest lock available for your Wi-Fi's front door, replacing older locks that had known weaknesses.",
+    "categories": [
+      "Networking",
+      "Security"
+    ],
+    "relevance": "Current standard tested in Network+ and wireless security coursework."
+  },
+  {
+    "id": "evil-twin",
+    "term": "Evil Twin Attack",
+    "definition": "A wireless attack where an attacker sets up a rogue Wi-Fi access point that mimics a legitimate one, tricking victims into connecting so their traffic can be intercepted or manipulated.",
+    "eli5": "An evil twin is a fake Wi-Fi hotspot with the same name as a real one, set up so people accidentally connect to the attacker's version instead.",
+    "categories": [
+      "Networking",
+      "Security"
+    ],
+    "relevance": "Common wireless penetration testing scenario and a staple of public Wi-Fi security awareness training."
+  },
+  {
+    "id": "rogue-access-point",
+    "term": "Rogue Access Point",
+    "definition": "An unauthorized wireless access point connected to a network without the knowledge or approval of network administrators, creating an unmonitored entry point for attackers.",
+    "eli5": "A rogue access point is like someone secretly installing their own unlocked side door onto a building without telling the owner.",
+    "categories": [
+      "Networking",
+      "Security"
+    ],
+    "relevance": "Relevant to wireless network security audits and enterprise network monitoring."
+  },
+  {
+    "id": "iot-security",
+    "term": "IoT Security",
+    "definition": "The practice of securing internet-connected devices — such as smart cameras, thermostats, and industrial sensors — which often ship with weak default settings and limited ability to receive security patches.",
+    "eli5": "IoT security is about locking down all the 'smart' gadgets in a house or factory, since many of them ship with weak default passwords and rarely get updated.",
+    "categories": [
+      "Security",
+      "Networking"
+    ],
+    "relevance": "A rapidly growing field as billions of connected devices create new, often poorly-secured attack surfaces."
+  },
+  {
+    "id": "gdpr",
+    "term": "GDPR (General Data Protection Regulation)",
+    "definition": "A European Union regulation that governs how organizations collect, store, process, and protect the personal data of EU residents, with significant fines for non-compliance.",
+    "eli5": "GDPR is a strict European rulebook that says companies must handle people's personal information carefully and ask permission before using it.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "A major compliance framework relevant to any organization handling data from EU citizens; covered in governance, risk, and compliance (GRC) courses."
+  },
+  {
+    "id": "hipaa",
+    "term": "HIPAA (Health Insurance Portability and Accountability Act)",
+    "definition": "A U.S. law that sets national standards for protecting sensitive patient health information from being disclosed without the patient's consent or knowledge.",
+    "eli5": "HIPAA is the U.S. rulebook that says your medical information has to be kept private and secure by doctors, hospitals, and insurance companies.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "Essential compliance knowledge for healthcare IT security roles and GRC coursework."
+  },
+  {
+    "id": "pci-dss",
+    "term": "PCI DSS (Payment Card Industry Data Security Standard)",
+    "definition": "A set of security standards that organizations handling credit card information must follow to protect cardholder data and reduce payment fraud.",
+    "eli5": "PCI DSS is the rulebook that stores and websites must follow to keep your credit card number safe whenever you pay with a card.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "Required knowledge for any role involving e-commerce or payment processing security."
+  },
+  {
+    "id": "nist-framework",
+    "term": "NIST Cybersecurity Framework",
+    "definition": "A voluntary framework developed by the U.S. National Institute of Standards and Technology that helps organizations manage cybersecurity risk through five core functions: Identify, Protect, Detect, Respond, and Recover.",
+    "eli5": "The NIST framework is like a widely trusted checklist and game plan that organizations follow to figure out their security risks and how to handle them.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "Widely referenced framework across U.S. government and industry; foundational to risk management coursework."
+  },
+  {
+    "id": "iso-27001",
+    "term": "ISO/IEC 27001",
+    "definition": "An international standard that specifies requirements for establishing, implementing, and continually improving an information security management system (ISMS) within an organization.",
+    "eli5": "ISO 27001 is an internationally recognized certification that proves a company has a solid, well-documented system for managing its information security.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "A globally recognized security management standard, relevant to GRC and enterprise security roles."
+  },
+  {
+    "id": "cvss",
+    "term": "CVSS (Common Vulnerability Scoring System)",
+    "definition": "A standardized framework for rating the severity of security vulnerabilities on a scale from 0 to 10, based on factors like exploitability, impact, and required access level.",
+    "eli5": "CVSS is like a severity score that tells you how dangerous a security flaw is, similar to how a hurricane gets a category number.",
+    "categories": [
+      "Security",
+      "Vulnerabilities"
+    ],
+    "relevance": "Used alongside CVEs in vulnerability management, patch prioritization, and Security+ coursework."
+  },
+  {
+    "id": "soc",
+    "term": "SOC (Security Operations Center)",
+    "definition": "A centralized team and facility responsible for continuously monitoring, detecting, analyzing, and responding to cybersecurity incidents across an organization's systems.",
+    "eli5": "A SOC is like a 24/7 control room full of analysts watching screens, ready to react the moment something suspicious happens anywhere in the organization.",
+    "categories": [
+      "Security",
+      "Career"
+    ],
+    "relevance": "A common entry point for cybersecurity careers (SOC analyst); central to incident response operations."
+  },
+  {
+    "id": "ciso",
+    "term": "CISO (Chief Information Security Officer)",
+    "definition": "A senior executive responsible for an organization's overall information security strategy, policy, and risk management program.",
+    "eli5": "The CISO is the top boss in charge of a company's entire security plan, from technology to policy to budget.",
+    "categories": [
+      "Security",
+      "Career"
+    ],
+    "relevance": "Important career-path vocabulary for students interested in cybersecurity leadership and governance roles."
+  },
+  {
+    "id": "red-blue-purple-team",
+    "term": "Red Team / Blue Team / Purple Team",
+    "definition": "Red teams simulate real-world attackers to test defenses offensively; blue teams defend systems and respond to those simulated (or real) attacks; purple teams facilitate collaboration and knowledge-sharing between the two.",
+    "eli5": "Red team plays the burglars trying to break in, blue team plays the guards trying to stop them, and purple team makes sure both sides share what they learned afterward.",
+    "categories": [
+      "Security",
+      "Career"
+    ],
+    "relevance": "Core vocabulary for penetration testing, defensive security, and cybersecurity competition (CTF) contexts."
+  },
+  {
+    "id": "bug-bounty",
+    "term": "Bug Bounty Program",
+    "definition": "A program where organizations offer monetary rewards to independent security researchers who find and responsibly report vulnerabilities in their systems or software.",
+    "eli5": "A bug bounty is like a reward poster offering cash to anyone who finds and reports a hidden flaw in a company's product, instead of exploiting it.",
+    "categories": [
+      "Security",
+      "Career"
+    ],
+    "relevance": "A popular way for students and researchers to gain real-world experience and income through ethical hacking."
+  },
+  {
+    "id": "responsible-disclosure",
+    "term": "Responsible Disclosure",
+    "definition": "An ethical practice where a security researcher who discovers a vulnerability privately reports it to the affected organization first, giving them time to fix the issue before any public disclosure.",
+    "eli5": "Responsible disclosure is like quietly telling a store owner their door lock is broken instead of shouting it to everyone on the street, giving them a chance to fix it first.",
+    "categories": [
+      "Security",
+      "Career"
+    ],
+    "relevance": "A core ethical principle in vulnerability research and penetration testing engagements."
+  },
+  {
+    "id": "digital-forensics",
+    "term": "Digital Forensics",
+    "definition": "The practice of collecting, preserving, and analyzing digital evidence from computers, networks, and devices in a legally sound manner, often to investigate cybercrimes or security incidents.",
+    "eli5": "Digital forensics is detective work for computers — carefully examining digital evidence after an incident, without disturbing it, so it can hold up in an investigation.",
+    "categories": [
+      "Security",
+      "Career"
+    ],
+    "relevance": "A distinct career path within cybersecurity, often paired with incident response and law enforcement work."
+  },
+  {
+    "id": "shared-responsibility-model",
+    "term": "Shared Responsibility Model",
+    "definition": "A cloud computing framework that defines which security tasks are handled by the cloud provider (like physical infrastructure) and which remain the customer's responsibility (like data and access configuration).",
+    "eli5": "It's like renting an apartment — the landlord secures the building's structure and locks, but you're still responsible for locking your own apartment door and not losing your key.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "Essential concept for cloud security coursework; a common source of real-world misconfiguration breaches."
+  },
+  {
+    "id": "container-security",
+    "term": "Container Security",
+    "definition": "The practice of securing containerized applications and their underlying infrastructure (such as Docker containers) throughout the build, deployment, and runtime lifecycle.",
+    "eli5": "Container security is about making sure each shipping-container-like software package is built safely, doesn't have hidden problems, and can't break out to affect neighboring containers.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "Increasingly important as organizations adopt microservices and DevOps; relevant to cloud security and DevSecOps coursework."
+  },
+  {
+    "id": "vm-escape",
+    "term": "VM Escape",
+    "definition": "A vulnerability that allows an attacker to break out of an isolated virtual machine and gain access to the host system or other virtual machines running on the same physical hardware.",
+    "eli5": "A VM escape is like a prisoner in one isolated cell somehow breaking through the wall into the guard's office or the cell next door.",
+    "categories": [
+      "Security",
+      "Vulnerabilities"
+    ],
+    "relevance": "A critical risk in virtualization and cloud multi-tenant environments; relevant to advanced cloud security topics."
+  },
+  {
+    "id": "iam",
+    "term": "IAM (Identity and Access Management)",
+    "definition": "The overall framework of policies and technologies used to ensure the right individuals have appropriate access to the right resources, at the right time, for the right reasons.",
+    "eli5": "IAM is the whole system for deciding who gets which keys, badges, and permissions across an entire organization, and making sure they're taken away when no longer needed.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "Foundational to enterprise and cloud security; encompasses authentication, authorization, RBAC, and SSO."
+  },
+  {
+    "id": "api-security",
+    "term": "API Security",
+    "definition": "The practice of protecting application programming interfaces (APIs) from abuse and attack, including securing authentication, enforcing rate limits, validating input, and encrypting data in transit.",
+    "eli5": "API security is about locking down the 'order counter' that different software programs use to talk to each other, so only authorized requests get served.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "Increasingly critical as modern apps rely heavily on APIs; a growing focus in web security and cloud security coursework."
+  },
+  {
+    "id": "devsecops",
+    "term": "DevSecOps",
+    "definition": "An approach that integrates security practices directly into the software development and operations (DevOps) lifecycle, rather than treating security as a separate, final step.",
+    "eli5": "DevSecOps means baking security checks into every step of building software, like tasting a dish while cooking instead of only checking it after it's served.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "A growing methodology bridging development, operations, and security teams; increasingly required knowledge for security engineers."
+  },
+  {
+    "id": "stride",
+    "term": "STRIDE Threat Model",
+    "definition": "A threat modeling framework developed by Microsoft that categorizes threats into six types: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, and Elevation of privilege.",
+    "eli5": "STRIDE is a checklist of six different ways something could go wrong with a system's security, used to systematically brainstorm risks before they happen.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "A widely taught threat modeling method in secure software design and application security courses."
+  },
+  {
+    "id": "fuzzing",
+    "term": "Fuzzing",
+    "definition": "An automated software testing technique that feeds a program large amounts of random, unexpected, or malformed input to discover crashes, bugs, and security vulnerabilities.",
+    "eli5": "Fuzzing is like repeatedly throwing weird, unexpected objects into a machine to see what breaks it, hoping to find a hidden flaw before someone else does.",
+    "categories": [
+      "Security",
+      "Vulnerabilities"
+    ],
+    "relevance": "A key technique in vulnerability research, penetration testing, and secure software development."
+  },
+  {
+    "id": "osint",
+    "term": "OSINT (Open-Source Intelligence)",
+    "definition": "Information gathered from publicly available sources — such as social media, websites, and public records — used by both defenders and attackers to research a target.",
+    "eli5": "OSINT is detective work using only public information, like piecing together someone's habits from their public social media posts.",
+    "categories": [
+      "Security",
+      "Social Engineering"
+    ],
+    "relevance": "A key reconnaissance technique in penetration testing, social engineering attacks, and threat intelligence."
   }
 ]
