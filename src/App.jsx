@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Shield, FlaskConical, BookOpen, Terminal, Wrench, Home, Award } from "lucide-react";
+import { Shield, FlaskConical, BookOpen, Terminal, Wrench, Home } from "lucide-react";
 import HomePage     from "./pages/Home";
 import LabsPage     from "./pages/Labs";
 import GlossaryPage from "./pages/Glossary";
@@ -42,13 +42,12 @@ export default function App() {
   const [page, setPage]       = useState("home");
   const [guideId, setGuideId] = useState(null);
   const [logs, setLogs]       = useState([]);
-  const [scores, setScores]   = useState({});
   const [consoleOpen, setConsoleOpen] = useState(true);
   const [clock, setClock]     = useState(() => new Date().toLocaleTimeString());
 
   const addLog   = useCallback(e => setLogs(p => [...p.slice(-999), e]), []);
-  const addScore = useCallback((mod, pts) => setScores(p => ({ ...p, [mod]: (p[mod]||0) + pts })), []);
-  const total    = Object.values(scores).reduce((a,b) => a+b, 0);
+  // addScore is kept as a no-op so Labs.jsx internal calls don't throw
+  const addScore = useCallback(() => {}, []);
   const openGuide = useCallback((id) => {
     setGuideId(id);
     setPage("guides");
@@ -103,7 +102,7 @@ export default function App() {
   const renderPage = () => {
     switch (page) {
       case "home":      return <HomePage setPage={setPage}/>;
-      case "labs":      return <LabsPage addLog={addLog} addScore={addScore} logs={logs} scores={scores} setLogs={setLogs} setScores={setScores}/>;
+      case "labs":      return <LabsPage addLog={addLog} addScore={addScore} logs={logs} setLogs={setLogs}/>;
       case "glossary":  return <GlossaryPage/>;
       case "tutorials": return <TutorialsPage openGuide={openGuide}/>;
       case "guides":    return <GuidesPage initialGuideId={guideId}/>;
@@ -118,16 +117,16 @@ export default function App() {
 
       {/* ── Header ── */}
       <header className="flex-shrink-0 bg-slate-900/95 border-b border-slate-800">
-        <div className="grid grid-cols-3 items-center px-6 py-3">
+        <div className="flex items-center justify-between px-6 py-3">
 
           {/* Left — logo */}
-          <button onClick={() => setPage("home")} className="flex items-center gap-2 hover:opacity-80 transition-opacity w-fit">
+          <button onClick={() => setPage("home")} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <Shield size={17} className="text-cyan-400"/>
             <span className="font-bold text-white text-sm">CyberSim</span>
           </button>
 
           {/* Center — nav */}
-          <nav className="flex items-center justify-center gap-0.5">
+          <nav className="flex items-center gap-0.5">
             {PAGES.map(p => (
               <button key={p.id} onClick={() => setPage(p.id)}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
@@ -141,16 +140,8 @@ export default function App() {
             ))}
           </nav>
 
-          {/* Right — score (only on labs) */}
-          <div className="flex justify-end">
-            {page === "labs" && (
-              <div className="flex items-center gap-1.5">
-                <Award size={13} className="text-cyan-400"/>
-                <span className="font-mono text-sm text-cyan-400 font-bold">{total.toLocaleString()}</span>
-                <span className="text-slate-700 text-xs">pts</span>
-              </div>
-            )}
-          </div>
+          {/* Right — intentionally empty (score removed) */}
+          <div className="w-24"/>
         </div>
       </header>
 
@@ -170,7 +161,7 @@ export default function App() {
             <span className="font-mono text-[11px] text-slate-700">{clock}</span>
             <div className="ml-auto flex items-center gap-1">
               <button onClick={() => setLogs([])} className="text-[11px] text-slate-700 hover:text-slate-400 px-2 py-0.5 rounded hover:bg-slate-800 transition-colors">clear</button>
-              <button onClick={() => { setLogs([]); setScores({}); setPage("home"); }} className="text-[11px] text-slate-700 hover:text-slate-400 px-2 py-0.5 rounded hover:bg-slate-800 transition-colors">reset</button>
+              <button onClick={() => { setLogs([]); setPage("home"); }} className="text-[11px] text-slate-700 hover:text-slate-400 px-2 py-0.5 rounded hover:bg-slate-800 transition-colors">reset</button>
               <button onClick={() => setConsoleOpen(v => !v)} className="text-[11px] text-slate-500 hover:text-slate-300 px-2 py-0.5 rounded hover:bg-slate-800 transition-colors ml-1">
                 {consoleOpen ? "collapse" : "expand"}
               </button>
