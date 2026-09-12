@@ -175,7 +175,7 @@ const Toggle = ({ enabled, onChange, label, desc }) => (
   <div className="flex items-start gap-3">
     <button onClick={() => onChange(!enabled)} aria-pressed={enabled}
       className={`mt-0.5 relative w-10 h-5 rounded-full flex-shrink-0 transition-colors duration-200 ${enabled ? "bg-cyan-500" : "bg-slate-700"}`}>
-      <span className={`absolute left-0 top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform duration-200 ${enabled ? "translate-x-5" : "translate-x-1"}`}/>
+      <span className={`absolute left-0 top-0.5 w-4 h-s4 bg-white rounded-full shadow transition-transform duration-200 ${enabled ? "translate-x-5" : "translate-x-1"}`}/>
     </button>
     <div>
       <div className="text-sm text-slate-300 leading-tight">{label}</div>

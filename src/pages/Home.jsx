@@ -1,4 +1,4 @@
-import { FlaskConical, BookOpen, Terminal, Wrench, ArrowRight, Shield, Zap, Lock, Database } from "lucide-react";
+import { FlaskConical, BookOpen, Terminal, Wrench, ArrowRight, Shield, Zap, Lock, Database, ShieldCheck } from "lucide-react";
 
 const sections = [
   {
@@ -82,16 +82,18 @@ export default function Home({ setPage }) {
         <h2 className="text-xs font-semibold text-slate-600 uppercase tracking-widest mb-5">How It Works</h2>
         <div className="grid grid-cols-3 gap-4">
           {[
-            { Icon:Zap,      n:"1", title:"Choose a Lab",   desc:"Select an attack scenario from the Labs page. Read the challenge description." },
+            { Icon:FlaskConical,      n:"1", title:"Choose a Lab",   desc:"Select an attack scenario from the Labs page. Read the challenge description." },
             { Icon:Lock,     n:"2", title:"Configure Defenses", desc:"Toggle the available security controls without hints. Try to block the attack on your own." },
-            { Icon:Database, n:"3", title:"See the Result",  desc:"The lab tells you if you succeeded. If not, reveal the correct approach and explanation." },
+            { Icon:ShieldCheck, n:"3", title:"See the Result",  desc:"The lab tells you if you succeeded. If not, reveal the correct approach and explanation." },
           ].map(({ Icon, n, title, desc }) => (
             <div key={n} className="bg-slate-900 border border-slate-800 rounded-xl p-5">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-7 h-7 rounded-full bg-cyan-900/60 border border-cyan-700/40 flex items-center justify-center text-xs font-bold text-cyan-400">{n}</div>
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-7 h-7 rounded-full bg-cyan-900/60 border border-cyan-700/40 flex items-center justify-center text-xs font-bold text-cyan-400 flex-shrink-0">{n}</div>
+                  <div className="font-semibold text-slate-200 text-sm">{title}</div>
+                </div>
                 <Icon size={16} className="text-slate-500"/>
               </div>
-              <div className="font-semibold text-slate-200 text-sm mb-1">{title}</div>
               <p className="text-xs text-slate-500 leading-relaxed">{desc}</p>
             </div>
           ))}
