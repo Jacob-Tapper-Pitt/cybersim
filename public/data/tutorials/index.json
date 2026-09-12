@@ -1,0 +1,42 @@
+[
+  {
+    "id": "wireshark",
+    "title": "Wireshark Basics",
+    "description": "Capture and analyze network traffic using Wireshark. Learn to read packets, apply filters, and identify common protocols.",
+    "difficulty": "Beginner",
+    "category": "Network Analysis",
+    "duration": "30 min",
+    "tags": ["Networking", "Packet Analysis", "Wireshark"],
+    "file": "wireshark.md"
+  },
+  {
+    "id": "git",
+    "title": "Git & Version Control Basics",
+    "description": "Learn the core Git workflow: init, add, commit, push, pull, and branching. Essential for all programming and security scripting work.",
+    "difficulty": "Beginner",
+    "category": "Development Tools",
+    "duration": "25 min",
+    "tags": ["Git", "Version Control", "Command Line"],
+    "file": "git.md"
+  },
+  {
+    "id": "linux",
+    "title": "Linux Command Line Basics",
+    "description": "Master essential Linux commands for navigating the file system, managing files, viewing processes, and working with permissions.",
+    "difficulty": "Beginner",
+    "category": "Operating Systems",
+    "duration": "35 min",
+    "tags": ["Linux", "Command Line", "Bash"],
+    "file": "linux.md"
+  },
+  {
+    "id": "nmap",
+    "title": "Nmap Network Scanning",
+    "description": "Learn to use Nmap to discover hosts, scan open ports, detect services, and identify operating systems on a network.",
+    "difficulty": "Intermediate",
+    "category": "Network Security",
+    "duration": "40 min",
+    "tags": ["Nmap", "Networking", "Reconnaissance"],
+    "file": "nmap.md"
+  }
+]

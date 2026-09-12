@@ -1,0 +1,130 @@
+[
+  {
+    "id": "firewall",
+    "term": "Firewall",
+    "definition": "A security system that monitors and controls incoming and outgoing network traffic based on a set of rules. It acts as a barrier between a trusted internal network and untrusted external networks, deciding what traffic is allowed through.",
+    "eli5": "Think of a firewall like a bouncer at a club — it checks every person (packet) trying to get in or out and only lets through the ones on the guest list.",
+    "categories": ["Networking", "Security"],
+    "relevance": "Core topic in Network Security and Firewall Administration. Appears in CompTIA Security+ and Network+ exams."
+  },
+  {
+    "id": "vpn",
+    "term": "VPN (Virtual Private Network)",
+    "definition": "A technology that creates a secure, encrypted connection over a less secure network like the internet. It tunnels your traffic through a remote server, masking your IP address and encrypting your data.",
+    "eli5": "A VPN is like sending mail inside a locked box through a courier — nobody can see what's inside even if they intercept it.",
+    "categories": ["Networking", "Security"],
+    "relevance": "Covered in Network Security, Remote Access, and Secure Communications modules."
+  },
+  {
+    "id": "encryption",
+    "term": "Encryption",
+    "definition": "The process of converting readable data (plaintext) into an unreadable format (ciphertext) using an algorithm and a key. Only someone with the correct decryption key can convert it back to readable form.",
+    "eli5": "Encryption is like a secret code between two people. You scramble your message before sending it, and only the person with the decoder ring can read it.",
+    "categories": ["Cryptography", "Security"],
+    "relevance": "Fundamental to all cybersecurity disciplines. Tested in Security+, CEH, and CISSP certifications."
+  },
+  {
+    "id": "xss",
+    "term": "XSS (Cross-Site Scripting)",
+    "definition": "A type of injection attack where malicious scripts are injected into otherwise trusted websites. When a browser visits the infected page, the malicious script executes with the same trust level as legitimate site code — allowing attackers to steal cookies, session tokens, or redirect users.",
+    "eli5": "Imagine someone sneaking a note into a school newsletter. When students read it, the note tells them to give their lunch money to the attacker.",
+    "categories": ["Web Security", "Security"],
+    "relevance": "Covered in Web Application Security and the OWASP Top 10. Common topic in ethical hacking courses."
+  },
+  {
+    "id": "sql-injection",
+    "term": "SQL Injection",
+    "definition": "An attack that inserts or 'injects' malicious SQL code into a query through user input fields. If the application doesn't properly sanitize input, the injected code can manipulate the database — bypassing authentication, extracting data, or deleting records.",
+    "eli5": "Like a form asking for your name, but you write a secret command that tricks the computer into showing everyone's passwords instead.",
+    "categories": ["Web Security", "Databases"],
+    "relevance": "Frequently tested in Security+, CEH, and university Web Security courses. One of the oldest and most common vulnerabilities."
+  },
+  {
+    "id": "penetration-testing",
+    "term": "Penetration Testing (Pen Testing)",
+    "definition": "An authorized simulated cyberattack on a computer system performed to evaluate its security. Pen testers use the same tools and techniques as real attackers, but with permission, to find vulnerabilities before malicious actors do.",
+    "eli5": "Hiring someone to try to break into your house so you can find out all the weak locks and broken windows before a real burglar does.",
+    "categories": ["Security", "Career"],
+    "relevance": "Core skill for cybersecurity careers. Tools like Metasploit, Nmap, and Burp Suite are used extensively."
+  },
+  {
+    "id": "hash",
+    "term": "Hash / Hash Function",
+    "definition": "A one-way mathematical function that converts data of any size into a fixed-size output (the hash or digest). The same input always produces the same hash, but you cannot reverse the hash to get the original data. Used to verify integrity and store passwords.",
+    "eli5": "Like putting something through a meat grinder — you can always grind the same meat the same way, but you can't un-grind it back.",
+    "categories": ["Cryptography", "Security"],
+    "relevance": "Essential for understanding password security, digital signatures, and data integrity. Appears in Cryptography and Security modules."
+  },
+  {
+    "id": "malware",
+    "term": "Malware",
+    "definition": "Short for 'malicious software'. Any software intentionally designed to disrupt, damage, or gain unauthorized access to a computer system. Types include viruses, worms, ransomware, spyware, adware, and trojans.",
+    "eli5": "Software that pretends to be helpful (or hides completely) but is actually secretly doing something bad to your computer.",
+    "categories": ["Security", "General"],
+    "relevance": "Broad category covered in Security Fundamentals, Ethical Hacking, and Incident Response courses."
+  },
+  {
+    "id": "vlan",
+    "term": "VLAN (Virtual Local Area Network)",
+    "definition": "A logical grouping of network devices that behave as if they're on the same physical network, even if they're physically separated. VLANs segment network traffic for security and performance without requiring separate physical hardware.",
+    "eli5": "Like having different departments in an office building on the same floor but using different walkie-talkie channels so they don't overhear each other.",
+    "categories": ["Networking"],
+    "relevance": "Key topic in Network Administration and Network Engineering courses. Covered in Cisco CCNA certification."
+  },
+  {
+    "id": "phishing",
+    "term": "Phishing",
+    "definition": "A social engineering attack where attackers impersonate legitimate organizations via email, text, or fake websites to trick users into revealing sensitive information like passwords, credit card numbers, or personal data.",
+    "eli5": "Like someone pretending to be your bank and calling you to ask for your PIN — they sound official, but it's a trick.",
+    "categories": ["Security", "Social Engineering"],
+    "relevance": "Covered in Security Awareness, Ethical Hacking, and Incident Response. One of the most common real-world attack vectors."
+  },
+  {
+    "id": "zero-day",
+    "term": "Zero-Day Vulnerability",
+    "definition": "A security flaw in software that is unknown to the vendor or has no available patch. Attackers who discover these vulnerabilities can exploit them before defenders have any chance to fix them. The name comes from having 'zero days' to prepare a defense.",
+    "eli5": "Finding a secret back door into a building that even the building owner doesn't know exists yet.",
+    "categories": ["Security", "Vulnerabilities"],
+    "relevance": "Important concept in Advanced Threat Intelligence, Vulnerability Management, and Malware Analysis courses."
+  },
+  {
+    "id": "osi-model",
+    "term": "OSI Model",
+    "definition": "The Open Systems Interconnection model is a conceptual framework that describes how network communication works in 7 layers: Physical, Data Link, Network, Transport, Session, Presentation, and Application. Each layer has a specific role and communicates with the layers above and below it.",
+    "eli5": "Like the postal system — there are layers of work (writing the letter, putting it in an envelope, addressing it, sorting it, delivering it) that all have to happen for a message to get from one place to another.",
+    "categories": ["Networking", "General"],
+    "relevance": "Fundamental networking concept required for CompTIA Network+, CCNA, and all network-related certifications."
+  },
+  {
+    "id": "tcp-ip",
+    "term": "TCP/IP",
+    "definition": "Transmission Control Protocol/Internet Protocol — the foundational suite of communication protocols that govern how data is transmitted across the internet. TCP ensures reliable, ordered delivery of data. IP handles addressing and routing.",
+    "eli5": "TCP/IP is the language computers use to talk to each other over the internet. TCP makes sure the message arrives correctly; IP makes sure it goes to the right address.",
+    "categories": ["Networking"],
+    "relevance": "Essential foundation for all networking courses and certifications (Network+, CCNA, Security+)."
+  },
+  {
+    "id": "port",
+    "term": "Port",
+    "definition": "A virtual point where network connections start and end. Ports are numbered 0–65535 and help identify which application should receive network traffic. Well-known ports include 80 (HTTP), 443 (HTTPS), 22 (SSH), and 3306 (MySQL).",
+    "eli5": "If an IP address is like a building's street address, then port numbers are like apartment numbers inside that building — they tell you exactly which service to deliver the data to.",
+    "categories": ["Networking"],
+    "relevance": "Critical knowledge for Network+ and Security+. Frequently tested in firewall configuration and network scanning labs."
+  },
+  {
+    "id": "dns",
+    "term": "DNS (Domain Name System)",
+    "definition": "The system that translates human-readable domain names (like www.google.com) into IP addresses that computers use to communicate. Without DNS, you'd need to remember IP addresses for every website you visit.",
+    "eli5": "DNS is like the internet's phone book — you look up a name (google.com) and it gives you the number (IP address) to call.",
+    "categories": ["Networking"],
+    "relevance": "Covered in all networking courses. DNS attacks like DNS spoofing and cache poisoning appear in Security+ and ethical hacking content."
+  },
+  {
+    "id": "social-engineering",
+    "term": "Social Engineering",
+    "definition": "Psychological manipulation of people into performing actions or divulging confidential information. Rather than exploiting technical vulnerabilities, social engineering exploits human psychology, trust, and authority to bypass security controls.",
+    "eli5": "Tricking people instead of hacking computers. Like pretending to be IT support to get someone to give you their password.",
+    "categories": ["Security", "Social Engineering"],
+    "relevance": "Key topic in Security Awareness training and Ethical Hacking. Often considered the most effective attack vector because it bypasses technical defenses."
+  }
+]

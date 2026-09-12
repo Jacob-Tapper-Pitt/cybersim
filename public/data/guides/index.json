@@ -1,0 +1,42 @@
+[
+  {
+    "id": "virtualbox-kali",
+    "title": "VirtualBox + Kali Linux",
+    "description": "Install VirtualBox and set up a Kali Linux virtual machine — the standard student cybersecurity lab environment.",
+    "difficulty": "Beginner",
+    "category": "Virtual Machines",
+    "duration": "45 min",
+    "tags": ["VirtualBox", "Kali Linux", "Virtual Machine", "Linux"],
+    "file": "virtualbox-kali.md"
+  },
+  {
+    "id": "wireshark-install",
+    "title": "Installing Wireshark",
+    "description": "Step-by-step installation of Wireshark on Windows, macOS, and Linux, including capture permission setup.",
+    "difficulty": "Beginner",
+    "category": "Network Tools",
+    "duration": "15 min",
+    "tags": ["Wireshark", "Network Analysis", "Installation"],
+    "file": "wireshark-install.md"
+  },
+  {
+    "id": "git-install",
+    "title": "Installing Git",
+    "description": "Install Git on Windows, macOS, and Linux and configure it for first use with SSH key authentication.",
+    "difficulty": "Beginner",
+    "category": "Development Tools",
+    "duration": "20 min",
+    "tags": ["Git", "GitHub", "Version Control"],
+    "file": "git-install.md"
+  },
+  {
+    "id": "vscode-setup",
+    "title": "VS Code for Security Work",
+    "description": "Install and configure Visual Studio Code with the essential extensions for Python scripting, Markdown, and cybersecurity workflows.",
+    "difficulty": "Beginner",
+    "category": "Development Tools",
+    "duration": "20 min",
+    "tags": ["VS Code", "Python", "Editor"],
+    "file": "vscode-setup.md"
+  }
+]
