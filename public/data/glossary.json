@@ -1,5 +1,309 @@
 [
   {
+    "id": "firewall",
+    "term": "Firewall",
+    "definition": "A security system that monitors and controls incoming and outgoing network traffic based on a set of rules. It acts as a barrier between a trusted internal network and untrusted external networks, deciding what traffic is allowed through.",
+    "eli5": "Think of a firewall like a bouncer at a club — it checks every person (packet) trying to get in or out and only lets through the ones on the guest list.",
+    "categories": [
+      "Networking",
+      "Security"
+    ],
+    "relevance": "Core topic in Network Security and Firewall Administration. Appears in CompTIA Security+ and Network+ exams."
+  },
+  {
+    "id": "vpn",
+    "term": "VPN (Virtual Private Network)",
+    "definition": "A technology that creates a secure, encrypted connection over a less secure network like the internet. It tunnels your traffic through a remote server, masking your IP address and encrypting your data.",
+    "eli5": "A VPN is like sending mail inside a locked box through a courier — nobody can see what's inside even if they intercept it.",
+    "categories": [
+      "Networking",
+      "Security"
+    ],
+    "relevance": "Covered in Network Security, Remote Access, and Secure Communications modules."
+  },
+  {
+    "id": "encryption",
+    "term": "Encryption",
+    "definition": "The process of converting readable data (plaintext) into an unreadable format (ciphertext) using an algorithm and a key. Only someone with the correct decryption key can convert it back to readable form.",
+    "eli5": "Encryption is like a secret code between two people. You scramble your message before sending it, and only the person with the decoder ring can read it.",
+    "categories": [
+      "Cryptography",
+      "Security"
+    ],
+    "relevance": "Fundamental to all cybersecurity disciplines. Tested in Security+, CEH, and CISSP certifications."
+  },
+  {
+    "id": "xss",
+    "term": "XSS (Cross-Site Scripting)",
+    "definition": "A type of injection attack where malicious scripts are injected into otherwise trusted websites. When a browser visits the infected page, the malicious script executes with the same trust level as legitimate site code — allowing attackers to steal cookies, session tokens, or redirect users. XSS comes in three forms: stored (persisted in a database), reflected (bounced off the server in a response), and DOM-based (manipulated entirely client-side).",
+    "eli5": "Imagine someone sneaking a note into a school newsletter. When students read it, the note tells them to give their lunch money to the attacker.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "Covered in Web Application Security and the OWASP Top 10. Common topic in ethical hacking courses."
+  },
+  {
+    "id": "sql-injection",
+    "term": "SQL Injection",
+    "definition": "An attack that inserts or 'injects' malicious SQL code into a query through user input fields. If the application doesn't properly sanitize input, the injected code can manipulate the database — bypassing authentication, extracting data, or deleting records. The definitive fix is parameterized queries, which separate SQL structure from user data.",
+    "eli5": "Like a form asking for your name, but you write a secret command that tricks the computer into showing everyone's passwords instead.",
+    "categories": [
+      "Web Security",
+      "Databases"
+    ],
+    "relevance": "Frequently tested in Security+, CEH, and university Web Security courses. One of the oldest and most common vulnerabilities."
+  },
+  {
+    "id": "penetration-testing",
+    "term": "Penetration Testing (Pen Testing)",
+    "definition": "An authorized simulated cyberattack on a computer system performed to evaluate its security. Pen testers use the same tools and techniques as real attackers, but with permission, to find vulnerabilities before malicious actors do.",
+    "eli5": "Hiring someone to try to break into your house so you can find out all the weak locks and broken windows before a real burglar does.",
+    "categories": [
+      "Security",
+      "Career"
+    ],
+    "relevance": "Core skill for cybersecurity careers. Tools like Metasploit, Nmap, and Burp Suite are used extensively."
+  },
+  {
+    "id": "hash",
+    "term": "Hash / Hash Function",
+    "definition": "A one-way mathematical function that converts data of any size into a fixed-size output (the hash or digest). The same input always produces the same hash, but you cannot reverse the hash to get the original data. Used to verify integrity and store passwords securely. Common algorithms include SHA-256 and bcrypt.",
+    "eli5": "Like putting something through a meat grinder — you can always grind the same meat the same way, but you can't un-grind it back.",
+    "categories": [
+      "Cryptography",
+      "Security"
+    ],
+    "relevance": "Essential for understanding password security, digital signatures, and data integrity. Appears in Cryptography and Security modules."
+  },
+  {
+    "id": "malware",
+    "term": "Malware",
+    "definition": "Short for 'malicious software'. Any software intentionally designed to disrupt, damage, or gain unauthorized access to a computer system. Types include viruses, worms, ransomware, spyware, adware, and trojans.",
+    "eli5": "Software that pretends to be helpful (or hides completely) but is actually secretly doing something bad to your computer.",
+    "categories": [
+      "Security",
+      "Malware"
+    ],
+    "relevance": "Broad category covered in Security Fundamentals, Ethical Hacking, and Incident Response courses."
+  },
+  {
+    "id": "vlan",
+    "term": "VLAN (Virtual Local Area Network)",
+    "definition": "A logical grouping of network devices that behave as if they're on the same physical network, even if they're physically separated. VLANs segment network traffic for security and performance without requiring separate physical hardware.",
+    "eli5": "Like having different departments in an office building on the same floor but using different walkie-talkie channels so they don't overhear each other.",
+    "categories": [
+      "Networking"
+    ],
+    "relevance": "Key topic in Network Administration and Network Engineering courses. Covered in Cisco CCNA certification."
+  },
+  {
+    "id": "phishing",
+    "term": "Phishing",
+    "definition": "A social engineering attack where attackers impersonate legitimate organizations via email, text, or fake websites to trick users into revealing sensitive information like passwords, credit card numbers, or personal data. Spear phishing targets specific individuals; whaling targets executives.",
+    "eli5": "Like someone pretending to be your bank and calling you to ask for your PIN — they sound official, but it's a trick.",
+    "categories": [
+      "Security",
+      "Social Engineering"
+    ],
+    "relevance": "Covered in Security Awareness, Ethical Hacking, and Incident Response. One of the most common real-world attack vectors."
+  },
+  {
+    "id": "zero-day",
+    "term": "Zero-Day Vulnerability",
+    "definition": "A security flaw in software that is unknown to the vendor or has no available patch. Attackers who discover these vulnerabilities can exploit them before defenders have any chance to fix them. The name comes from having 'zero days' to prepare a defense.",
+    "eli5": "Finding a secret back door into a building that even the building owner doesn't know exists yet.",
+    "categories": [
+      "Security",
+      "Vulnerabilities"
+    ],
+    "relevance": "Important concept in Advanced Threat Intelligence, Vulnerability Management, and Malware Analysis courses."
+  },
+  {
+    "id": "osi-model",
+    "term": "OSI Model",
+    "definition": "The Open Systems Interconnection model is a conceptual framework that describes how network communication works in 7 layers: Physical, Data Link, Network, Transport, Session, Presentation, and Application. Each layer has a specific role and communicates with the layers above and below it.",
+    "eli5": "Like the postal system — there are layers of work (writing the letter, putting it in an envelope, addressing it, sorting it, delivering it) that all have to happen for a message to get from one place to another.",
+    "categories": [
+      "Networking",
+      "General"
+    ],
+    "relevance": "Fundamental networking concept required for CompTIA Network+, CCNA, and all network-related certifications."
+  },
+  {
+    "id": "tcp-ip",
+    "term": "TCP/IP",
+    "definition": "Transmission Control Protocol/Internet Protocol — the foundational suite of communication protocols that govern how data is transmitted across the internet. TCP ensures reliable, ordered delivery of data. IP handles addressing and routing.",
+    "eli5": "TCP/IP is the language computers use to talk to each other over the internet. TCP makes sure the message arrives correctly; IP makes sure it goes to the right address.",
+    "categories": [
+      "Networking"
+    ],
+    "relevance": "Essential foundation for all networking courses and certifications (Network+, CCNA, Security+)."
+  },
+  {
+    "id": "port",
+    "term": "Port",
+    "definition": "A virtual point where network connections start and end. Ports are numbered 0–65535 and help identify which application should receive network traffic. Well-known ports include 80 (HTTP), 443 (HTTPS), 22 (SSH), and 3306 (MySQL).",
+    "eli5": "If an IP address is like a building's street address, then port numbers are like apartment numbers inside that building — they tell you exactly which service to deliver the data to.",
+    "categories": [
+      "Networking"
+    ],
+    "relevance": "Critical knowledge for Network+ and Security+. Frequently tested in firewall configuration and network scanning labs."
+  },
+  {
+    "id": "dns",
+    "term": "DNS (Domain Name System)",
+    "definition": "The system that translates human-readable domain names (like www.google.com) into IP addresses that computers use to communicate. Without DNS, you'd need to remember IP addresses for every website you visit.",
+    "eli5": "DNS is like the internet's phone book — you look up a name (google.com) and it gives you the number (IP address) to call.",
+    "categories": [
+      "Networking"
+    ],
+    "relevance": "Covered in all networking courses. DNS attacks like DNS spoofing and cache poisoning appear in Security+ and ethical hacking content."
+  },
+  {
+    "id": "social-engineering",
+    "term": "Social Engineering",
+    "definition": "Psychological manipulation of people into performing actions or divulging confidential information. Rather than exploiting technical vulnerabilities, social engineering exploits human psychology, trust, and authority to bypass security controls.",
+    "eli5": "Tricking people instead of hacking computers. Like pretending to be IT support to get someone to give you their password.",
+    "categories": [
+      "Security",
+      "Social Engineering"
+    ],
+    "relevance": "Key topic in Security Awareness training and Ethical Hacking. Often considered the most effective attack vector because it bypasses technical defenses."
+  },
+  {
+    "id": "authentication",
+    "term": "Authentication",
+    "definition": "The process of verifying that a user, device, or service is who or what it claims to be. Common factors include something you know (password), something you have (phone), or something you are (fingerprint).",
+    "eli5": "Authentication is the security check that asks, 'Are you really you?' before letting you in.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "A core concept in identity and access management, web security, operating systems, and Security+ coursework."
+  },
+  {
+    "id": "authorization",
+    "term": "Authorization",
+    "definition": "The process of deciding what an authenticated user, device, or service is allowed to access or do. Authentication and authorization are distinct — you can be authenticated (proven who you are) but still unauthorized to access a specific resource.",
+    "eli5": "Authentication checks your identity; authorization checks which rooms you are allowed to enter.",
+    "categories": [
+      "Security",
+      "Web Security"
+    ],
+    "relevance": "Important for access control, secure APIs, databases, cloud security, and the OWASP Top 10."
+  },
+  {
+    "id": "mfa",
+    "term": "MFA (Multi-Factor Authentication)",
+    "definition": "An authentication method that requires two or more different factors to verify a user's identity, such as a password plus a code from a phone or a hardware security key. Even if one factor is compromised, an attacker still needs the others.",
+    "eli5": "Instead of relying on one lock, MFA asks for two different proofs before opening the door.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "A practical defense against stolen passwords and a common topic in security awareness, identity management, and certification exams."
+  },
+  {
+    "id": "cia-triad",
+    "term": "CIA Triad",
+    "definition": "A security model built around three core principles: Confidentiality (data is only accessible to authorized parties), Integrity (data is accurate and unaltered), and Availability (data and systems are accessible when needed). Used to evaluate whether an information system is adequately protected.",
+    "eli5": "The CIA triad asks whether data is kept secret, kept correct, and available when people need it.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "A foundational framework used in security policies, risk assessments, incident analysis, and Security+ coursework."
+  },
+  {
+    "id": "least-privilege",
+    "term": "Principle of Least Privilege",
+    "definition": "The practice of giving users, applications, and services only the minimum permissions required to perform their tasks, and no more. Limiting permissions reduces the potential damage if an account is compromised.",
+    "eli5": "Give each person only the keys needed for their job, not a master key to the whole building.",
+    "categories": [
+      "Security",
+      "General"
+    ],
+    "relevance": "Used in operating systems, databases, cloud IAM, application security, and defensive architecture."
+  },
+  {
+    "id": "ids-ips",
+    "term": "IDS / IPS",
+    "definition": "An Intrusion Detection System (IDS) monitors network traffic and system activity and raises alerts about suspicious behavior. An Intrusion Prevention System (IPS) can also block or stop detected threats in real time.",
+    "eli5": "An IDS is a security alarm; an IPS is an alarm that can also lock the door when it spots trouble.",
+    "categories": [
+      "Networking",
+      "Security"
+    ],
+    "relevance": "Common in network defense labs and important for understanding monitoring, detection engineering, and Security+ concepts."
+  },
+  {
+    "id": "cve",
+    "term": "CVE (Common Vulnerabilities and Exposures)",
+    "definition": "A public identification system for known cybersecurity vulnerabilities. Each listed issue receives a unique identifier, such as CVE-2024-12345, so researchers and defenders can discuss and track it consistently across tools and databases.",
+    "eli5": "A CVE is a tracking number for a known software security problem.",
+    "categories": [
+      "Security",
+      "Vulnerabilities"
+    ],
+    "relevance": "Used in vulnerability scanning, patch management, threat intelligence, penetration testing, and security advisories."
+  },
+  {
+    "id": "vulnerability",
+    "term": "Vulnerability",
+    "definition": "A weakness in software, hardware, configuration, or process that could be exploited to compromise confidentiality, integrity, or availability. Vulnerabilities can stem from coding errors, design flaws, misconfiguration, or missing patches.",
+    "eli5": "A vulnerability is a weak point that an attacker might use to get past a security control.",
+    "categories": [
+      "Security",
+      "Vulnerabilities"
+    ],
+    "relevance": "A basic concept for risk assessment, secure coding, vulnerability management, and ethical hacking courses."
+  },
+  {
+    "id": "incident-response",
+    "term": "Incident Response",
+    "definition": "The organized process of preparing for, detecting, containing, investigating, recovering from, and learning from a cybersecurity incident. Typically follows a six-phase lifecycle: preparation, identification, containment, eradication, recovery, and lessons learned.",
+    "eli5": "Incident response is the emergency plan for finding out what happened, stopping the damage, and making sure it does not happen again.",
+    "categories": [
+      "Security",
+      "Career"
+    ],
+    "relevance": "Central to SOC analyst, digital forensics, threat hunting, and security operations coursework."
+  },
+  {
+    "id": "ssh",
+    "term": "SSH (Secure Shell)",
+    "definition": "A cryptographic protocol that provides encrypted remote login and command execution over a network. SSH also supports secure file transfers (SCP, SFTP) and tunneling. It replaced the insecure Telnet protocol and is the standard for remote server administration.",
+    "eli5": "SSH is a locked, private terminal session to another computer over a network.",
+    "categories": [
+      "Networking",
+      "Security"
+    ],
+    "relevance": "Essential for Linux administration, cloud servers, Git authentication, and cybersecurity lab environments."
+  },
+  {
+    "id": "digital-signature",
+    "term": "Digital Signature",
+    "definition": "A cryptographic proof that verifies who signed digital data and whether the data was changed after signing. It uses the signer's private key to generate the signature, and the corresponding public key to verify it — ensuring both authenticity and integrity.",
+    "eli5": "A digital signature is like a tamper-evident signature that proves both who approved a message and that nobody changed it.",
+    "categories": [
+      "Cryptography",
+      "Security"
+    ],
+    "relevance": "Used in software updates, certificates, secure email, code signing, and public-key infrastructure."
+  },
+  {
+    "id": "public-key-cryptography",
+    "term": "Public-Key Cryptography",
+    "definition": "A cryptographic system that uses a mathematically related key pair: a public key that can be freely shared, and a private key that must be kept secret. Data encrypted with the public key can only be decrypted with the private key, and vice versa.",
+    "eli5": "Anyone can use your public padlock to lock a box for you, but only your private key can open it.",
+    "categories": [
+      "Cryptography",
+      "Security"
+    ],
+    "relevance": "Supports HTTPS, SSH, digital signatures, secure email, certificates, and many modern authentication systems."
+  },
+  {
     "id": "nat",
     "term": "NAT (Network Address Translation)",
     "definition": "A technique that maps private internal IP addresses to a single public IP address (or a small pool of them) when traffic leaves a network. It lets many devices share one public-facing address and hides internal network structure from outsiders.",
@@ -1074,5 +1378,216 @@
       "Social Engineering"
     ],
     "relevance": "A key reconnaissance technique in penetration testing, social engineering attacks, and threat intelligence."
+  },
+  {
+    "id": "idor",
+    "term": "IDOR (Insecure Direct Object Reference)",
+    "definition": "A broken access control vulnerability where an application exposes sequential or predictable internal identifiers in URLs or API parameters. If the server checks authentication but not authorization (whether the user owns the requested resource), an attacker can enumerate IDs to access other users' data.",
+    "eli5": "A medical portal shows your records at /records/1042. You change the URL to /records/1043 and see another patient's private data because the server never checked whether record 1043 belongs to you.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "Number one in the OWASP Top 10 under Broken Access Control. A common finding in API security assessments and web application penetration tests."
+  },
+  {
+    "id": "open-redirect",
+    "term": "Open Redirect",
+    "definition": "A vulnerability where an application accepts a user-controlled URL in a redirect parameter and forwards users to it without validation. Attackers use legitimate domains as the first hop to bypass email filters or trick users into trusting a link, then redirect them to a phishing or malware site.",
+    "eli5": "A link to trusted-bank.com/redirect?next=evil.com looks safe at first glance, but it immediately bounces you to evil.com. Email filters let it through because it starts with a legitimate domain.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "Common in phishing campaigns and covered in web application security testing. Prevented by allowlisting redirect destinations or enforcing relative-path-only redirects."
+  },
+  {
+    "id": "insecure-deserialization",
+    "term": "Insecure Deserialization",
+    "definition": "A vulnerability that occurs when an application deserializes (unpacks) data from an untrusted source without verifying its integrity. If user-supplied data such as a cookie encodes role or permission claims and is not cryptographically signed, an attacker can modify it to escalate privileges.",
+    "eli5": "An app stores your role in a cookie as {role: 'user'}. Without a signature, you can decode it, change it to {role: 'admin'}, and send it back — the server trusts whatever it receives.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "Part of the OWASP Top 10. Closely related to JWT security. Prevented by HMAC-signing serialized data or using server-side sessions that store permissions only on the server."
+  },
+  {
+    "id": "mass-assignment",
+    "term": "Mass Assignment",
+    "definition": "A vulnerability where an API or form automatically binds all submitted fields to a data model without filtering. An attacker can include extra fields like admin:true or role:'superadmin' alongside legitimate data, and the server may silently apply them if no allowlist is enforced.",
+    "eli5": "A profile update form should only accept 'name' and 'email'. You also send 'admin: true'. If the server applies everything it receives without filtering, you've just made yourself an administrator.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "Common in frameworks with ORM auto-binding. Prevented by explicit field allowlisting. Appears in API security and secure coding courses."
+  },
+  {
+    "id": "ip-spoofing",
+    "term": "IP Spoofing",
+    "definition": "Forging the source IP address in a packet's header so that traffic appears to originate from a trusted host. Used in DDoS amplification attacks, bypassing IP-based access controls, and obscuring attack origin. Mitigated by ingress/egress filtering, packet filtering, and deep packet inspection.",
+    "eli5": "Like sending a letter with a fake return address. The recipient sees a trustworthy sender, but the letter actually came from somewhere else entirely.",
+    "categories": [
+      "Networking",
+      "Security"
+    ],
+    "relevance": "Covered in network security labs and penetration testing. Understanding IP spoofing is essential for configuring firewalls and intrusion detection systems."
+  },
+  {
+    "id": "parameterized-query",
+    "term": "Parameterized Query (Prepared Statement)",
+    "definition": "A method of constructing database queries by separating the SQL command structure from user-supplied values. The database engine receives the query template and the data independently, so no matter what characters the data contains, it is treated as a literal value and can never alter the query's logic. The definitive defense against SQL injection.",
+    "eli5": "Instead of handing the database a complete sentence with your words mixed in, you hand it a template with blanks and separately fill in the blanks. The blanks are always treated as data — never as commands.",
+    "categories": [
+      "Databases",
+      "Web Security"
+    ],
+    "relevance": "The recommended fix for SQL injection in every web security curriculum. Understanding prepared statements is essential for secure backend development."
+  },
+  {
+    "id": "hsts",
+    "term": "HSTS (HTTP Strict Transport Security)",
+    "definition": "An HTTP response header that instructs browsers to only connect to a site over HTTPS — never plain HTTP — for a specified duration. Once received by a browser, it prevents SSL stripping attacks where an attacker downgrades a connection from HTTPS to HTTP. The header specifies a max-age and can optionally apply to subdomains.",
+    "eli5": "HSTS is the site telling your browser: 'From now on, never accept an unencrypted connection to me — even if someone tries to trick you into one.'",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "One of the key HTTP security headers. Covered in Web Application Security alongside Content Security Policy and X-Frame-Options."
+  },
+  {
+    "id": "csp",
+    "term": "CSP (Content Security Policy)",
+    "definition": "An HTTP response header that instructs browsers about which sources of content — scripts, styles, images, fonts — are allowed to load on a page. By allowlisting trusted origins and blocking inline scripts, CSP significantly reduces the impact of XSS attacks even if an injection point exists.",
+    "eli5": "CSP is a rulebook the server sends to the browser: 'Only run scripts from these trusted places, and ignore any scripts baked into the page itself.' This stops attackers from sneaking in scripts even if they find an injection point.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "A key HTTP security header covered in Web Application Security. Paired with X-Frame-Options and HSTS as baseline security headers for any production web application."
+  },
+  {
+    "id": "rate-limiting",
+    "term": "Rate Limiting",
+    "definition": "A defense mechanism that caps how many requests a user or IP address can make within a given time window. Applied to authentication endpoints, it prevents brute force and credential stuffing attacks by making automated guessing take an impractical amount of time. Often combined with account lockout, CAPTCHA, and exponential backoff.",
+    "eli5": "Rate limiting is like a bank that only lets you try your PIN three times before locking the card. An automated script trying millions of PINs per second is stopped cold.",
+    "categories": [
+      "Security",
+      "Web Security"
+    ],
+    "relevance": "A key defense against brute force and credential stuffing. Covered in API security, authentication design, and secure coding courses."
+  },
+  {
+    "id": "owasp",
+    "term": "OWASP Top 10",
+    "definition": "A regularly updated list published by the Open Web Application Security Project identifying the ten most critical web application security risks, based on prevalence and impact data from real-world applications. The 2021 list includes: Broken Access Control, Cryptographic Failures, Injection, Insecure Design, Security Misconfiguration, Vulnerable and Outdated Components, Identification and Authentication Failures, Software and Data Integrity Failures, Security Logging and Monitoring Failures, and SSRF.",
+    "eli5": "The OWASP Top 10 is like a 'most wanted' list for web security problems — the ten types of vulnerabilities that cause the most damage across the internet.",
+    "categories": [
+      "Web Security",
+      "Security",
+      "General"
+    ],
+    "relevance": "The universal reference for web application security. Referenced in virtually every web security course, certification (Security+, OSCP), and penetration testing engagement."
+  },
+  {
+    "id": "exploit",
+    "term": "Exploit",
+    "definition": "Code or a technique that takes advantage of a specific vulnerability to cause unintended behavior in a target system — such as gaining unauthorized access, executing arbitrary code, or crashing a service. An exploit is the mechanism that turns a theoretical vulnerability into an actual attack.",
+    "eli5": "A vulnerability is an unlocked window. An exploit is the specific technique for climbing through it.",
+    "categories": [
+      "Security",
+      "Vulnerabilities"
+    ],
+    "relevance": "Core vocabulary for penetration testing, vulnerability research, and ethical hacking. Understanding the difference between a vulnerability and an exploit is essential for security analysis."
+  },
+  {
+    "id": "payload",
+    "term": "Payload",
+    "definition": "The malicious component of an attack — the part that actually does the damage or achieves the attacker's goal. In malware, the payload is the harmful code executed after the dropper runs. In a web attack, it might be an XSS script or SQL fragment that performs the unauthorized action.",
+    "eli5": "In a missile, the 'payload' is the warhead — the dangerous part. In a cyberattack, the payload is the actual malicious instruction that runs once the attacker gets through the defenses.",
+    "categories": [
+      "Security",
+      "Malware"
+    ],
+    "relevance": "Used throughout ethical hacking, malware analysis, and web security coursework. Understanding payloads is foundational for analyzing attack intent and building detection signatures."
+  },
+  {
+    "id": "cors",
+    "term": "CORS (Cross-Origin Resource Sharing)",
+    "definition": "A browser mechanism that controls which cross-origin requests are permitted. The Same-Origin Policy blocks scripts from reading responses from different origins by default. CORS relaxes this restriction through HTTP response headers — Access-Control-Allow-Origin specifies which origins may read responses. A wildcard (*) allows any origin, which can expose private API data to malicious sites.",
+    "eli5": "Your browser normally won't let code on evil.com read responses from bank.com. CORS is the bank's way of saying which other sites are trusted to read its responses. Setting it to '*' is like saying 'everyone can read our responses' — which is dangerous for private data.",
+    "categories": [
+      "Web Security",
+      "Networking"
+    ],
+    "relevance": "Important for API security and Single-Page Application development. Misconfigured CORS is a common real-world vulnerability covered in Web Application Security and the OWASP Top 10."
+  },
+  {
+    "id": "hmac",
+    "term": "HMAC (Hash-based Message Authentication Code)",
+    "definition": "A cryptographic construction that combines a hash function with a secret key to produce a message authentication code. HMAC verifies both the integrity of a message (it wasn't changed) and its authenticity (it came from someone with the key). Used to sign cookies, API requests, and tokens such as JWTs.",
+    "eli5": "HMAC is a hash with a secret mixed in. Anyone can compute a regular hash, but only people with the secret key can produce or verify an HMAC. If the HMAC doesn't match, the message was tampered with.",
+    "categories": [
+      "Cryptography",
+      "Security"
+    ],
+    "relevance": "Essential for understanding secure session management, JWT signature verification, and API authentication. Appears in Cryptography and Web Security courses."
+  },
+  {
+    "id": "same-origin-policy",
+    "term": "Same-Origin Policy (SOP)",
+    "definition": "A browser security model that prevents scripts on one origin (scheme + hostname + port) from reading data from a different origin. For example, JavaScript on evil.com cannot read responses from bank.com. SOP is the reason CSRF and CORS exist as concepts — CSRF exploits the fact that SOP doesn't block requests being made, only responses being read.",
+    "eli5": "Your browser enforces a rule: scripts from website A can't read data from website B. It prevents a malicious tab from secretly stealing data from your bank tab.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "The browser security boundary that makes the web safe by default. Understanding SOP is prerequisite to understanding XSS, CORS, CSRF, and iframe security."
+  },
+  {
+    "id": "sensitive-data-exposure",
+    "term": "Sensitive Data Exposure",
+    "definition": "A broad vulnerability category covering situations where applications inadvertently reveal information they shouldn't — including server version numbers in HTTP headers, stack traces in error messages, internal file paths, database connection strings, or credentials stored in plaintext. Attackers use this information for fingerprinting and targeted attacks.",
+    "eli5": "When an error page shows the attacker your exact software versions, file paths, and database details, it's like handing them a blueprint of your building before they try to break in.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "Part of the OWASP Top 10 under Cryptographic Failures and Security Misconfiguration. Reducing information leakage is covered in Secure Coding and Web Application Security courses."
+  },
+  {
+    "id": "reverse-shell",
+    "term": "Reverse Shell",
+    "definition": "A type of shell connection where the compromised target initiates the connection back to the attacker's machine, rather than the attacker connecting to the target. This bypasses inbound firewall rules and NAT. Commonly established after exploiting command injection, file upload vulnerabilities, or remote code execution flaws.",
+    "eli5": "Normally a hacker tries to connect to your machine, which firewalls can block. With a reverse shell, your machine calls the hacker — firewalls usually allow outbound connections, so the attacker gets a command shell from the inside out.",
+    "categories": [
+      "Security",
+      "Vulnerabilities"
+    ],
+    "relevance": "A core concept in ethical hacking and post-exploitation phases. Understanding reverse shells is essential for penetration testing labs using tools like Metasploit and netcat."
+  },
+  {
+    "id": "account-enumeration",
+    "term": "Account Enumeration",
+    "definition": "A technique where an attacker exploits subtle differences in application responses — different error messages, response times, or HTTP status codes for valid vs. invalid usernames — to build a list of registered accounts. A login form that says 'No account found for that username' reveals more than it should.",
+    "eli5": "A login form that says 'wrong password' for real accounts and 'user not found' for fake ones is accidentally giving attackers a way to verify which usernames are real — letting them build a target list before even attempting passwords.",
+    "categories": [
+      "Web Security",
+      "Security"
+    ],
+    "relevance": "Covered in Web Application Security and authentication design. The fix is returning identical error messages for all authentication failures, regardless of whether the username exists."
+  },
+  {
+    "id": "threat-modeling",
+    "term": "Threat Modeling",
+    "definition": "A structured process for identifying, categorizing, and prioritizing potential threats to a system before or during design. Common frameworks include STRIDE (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege) and PASTA. The goal is to find security problems early when they are cheapest to fix.",
+    "eli5": "Before building something, you think like an attacker: what could go wrong, who might attack it, and how? Better to find the problems on paper than after deployment.",
+    "categories": [
+      "Security",
+      "General",
+      "Career"
+    ],
+    "relevance": "Covered in Secure Software Development, Security Architecture, and CISSP coursework. A practical skill for any security-focused developer or architect."
   }
 ]
