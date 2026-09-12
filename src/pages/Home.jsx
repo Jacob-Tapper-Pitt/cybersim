@@ -36,10 +36,10 @@ const sections = [
 ];
 
 const colorMap = {
-  cyan:    { border:"border-cyan-500/20",   icon:"text-cyan-400",    btn:"bg-cyan-700 hover:bg-cyan-600",    badge:"bg-cyan-900/40 text-cyan-300"   },
-  emerald: { border:"border-emerald-500/20",icon:"text-emerald-400", btn:"bg-emerald-700 hover:bg-emerald-600", badge:"bg-emerald-900/40 text-emerald-300" },
-  amber:   { border:"border-amber-500/20",  icon:"text-amber-400",   btn:"bg-amber-700 hover:bg-amber-600",   badge:"bg-amber-900/40 text-amber-300"  },
-  violet:  { border:"border-violet-500/20", icon:"text-violet-400",  btn:"bg-violet-700 hover:bg-violet-600", badge:"bg-violet-900/40 text-violet-300" },
+  cyan:    { border:"border-cyan-500/20",   icon:"text-cyan-400",    dot:"bg-cyan-400",    btn:"bg-cyan-700 hover:bg-cyan-600",    badge:"bg-cyan-900/40 text-cyan-300"   },
+  emerald: { border:"border-emerald-500/20",icon:"text-emerald-400", dot:"bg-emerald-400", btn:"bg-emerald-700 hover:bg-emerald-600", badge:"bg-emerald-900/40 text-emerald-300" },
+  amber:   { border:"border-amber-500/20",  icon:"text-amber-400",   dot:"bg-amber-400",   btn:"bg-amber-700 hover:bg-amber-600",   badge:"bg-amber-900/40 text-amber-300"  },
+  violet:  { border:"border-violet-500/20", icon:"text-violet-400",  dot:"bg-violet-400",  btn:"bg-violet-700 hover:bg-violet-600",  badge:"bg-violet-900/40 text-violet-300" },
 };
 
 export default function Home({ setPage }) {
@@ -114,7 +114,7 @@ export default function Home({ setPage }) {
                 <ul className="space-y-1 mb-4">
                   {items.map(item => (
                     <li key={item} className="flex items-center gap-2 text-xs text-slate-400">
-                      <span className={`w-1 h-1 rounded-full flex-shrink-0 ${c.icon.replace("text-","bg-")}`}/>
+                      <span className={`w-1 h-1 rounded-full flex-shrink-0 ${c.dot}`}/>
                       {item}
                     </li>
                   ))}
@@ -131,7 +131,7 @@ export default function Home({ setPage }) {
 
       {/* Footer note */}
       <div className="text-center text-xs text-slate-700 pb-4">
-        Content is regularly updated. Data files for Glossary, Tutorials, and Guides can be edited independently without touching the application code.
+        Created by CyberSim Team [Jacob T, Layan E, Ivan L].
       </div>
     </div>
   );
