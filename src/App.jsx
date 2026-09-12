@@ -1,10 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
-import { Shield, FlaskConical, BookOpen, Terminal, Wrench, Home } from "lucide-react";
+import { Shield, FlaskConical, BookOpen, Terminal, Wrench, Home, Award } from "lucide-react";
 import HomePage     from "./pages/Home";
 import LabsPage     from "./pages/Labs";
 import GlossaryPage from "./pages/Glossary";
 import TutorialsPage from "./pages/Tutorials";
 import GuidesPage   from "./pages/Guides";
+import CertificationsPage from "./pages/Certifications";
 
 // ─── Navigation items ─────────────────────────────────────────────────────────
 const PAGES = [
@@ -13,6 +14,7 @@ const PAGES = [
   { id:"glossary",  label:"Glossary",           Icon:BookOpen    },
   { id:"tutorials", label:"Tutorials",          Icon:Terminal    },
   { id:"guides",    label:"Installation Guides",Icon:Wrench      },
+  { id:"certifications", label:"Certifications", Icon:Award },
 ];
 
 // ─── Event console (only visible on Labs page) ────────────────────────────────
@@ -106,6 +108,7 @@ export default function App() {
       case "glossary":  return <GlossaryPage/>;
       case "tutorials": return <TutorialsPage openGuide={openGuide}/>;
       case "guides":    return <GuidesPage initialGuideId={guideId}/>;
+      case "certifications": return <CertificationsPage/>;
       default: return null;
     }
   };
