@@ -16,7 +16,7 @@ function MarkdownView({ markdown }) {
   return <div className="md-content" dangerouslySetInnerHTML={{ __html: renderMarkdown(markdown) }}/>;
 }
 
-export default function Guides() {
+export default function Guides({ initialGuideId }) {
   const [index, setIndex]       = useState([]);
   const [loading, setLoading]   = useState(true);
   const [error, setError]       = useState("");
@@ -29,7 +29,12 @@ export default function Guides() {
   useEffect(() => {
     fetch(`${BASE}data/guides/index.json`)
       .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
-      .then(data => { setIndex(data); setLoading(false); })
+      .then(data => {
+        setIndex(data);
+        setLoading(false);
+        const requestedGuide = data.find(guide => guide.id === initialGuideId);
+        if (requestedGuide) openGuide(requestedGuide);
+      })
       .catch(e => { setError(e.message); setLoading(false); });
   }, []);
 

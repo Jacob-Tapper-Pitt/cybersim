@@ -17,7 +17,7 @@ Wireshark is the world's most widely used network protocol analyzer. It lets you
 
 ## Prerequisites
 
-- Wireshark must be installed ([see the Installation Guide for Wireshark](/))
+- Wireshark must be installed ([see the Installation Guide for Wireshark](#guide=wireshark-install))
 - Administrator or root privileges on your machine
 - Basic understanding of IP addresses and ports
 

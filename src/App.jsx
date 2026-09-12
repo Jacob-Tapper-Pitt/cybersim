@@ -40,6 +40,7 @@ function EventConsole({ events }) {
 // ─── App ──────────────────────────────────────────────────────────────────────
 export default function App() {
   const [page, setPage]       = useState("home");
+  const [guideId, setGuideId] = useState(null);
   const [logs, setLogs]       = useState([]);
   const [scores, setScores]   = useState({});
   const [consoleOpen, setConsoleOpen] = useState(true);
@@ -48,6 +49,10 @@ export default function App() {
   const addLog   = useCallback(e => setLogs(p => [...p.slice(-999), e]), []);
   const addScore = useCallback((mod, pts) => setScores(p => ({ ...p, [mod]: (p[mod]||0) + pts })), []);
   const total    = Object.values(scores).reduce((a,b) => a+b, 0);
+  const openGuide = useCallback((id) => {
+    setGuideId(id);
+    setPage("guides");
+  }, []);
 
   // Inject scrollbar CSS once
   useEffect(() => {
@@ -100,8 +105,8 @@ export default function App() {
       case "home":      return <HomePage setPage={setPage}/>;
       case "labs":      return <LabsPage addLog={addLog} addScore={addScore} logs={logs} scores={scores} setLogs={setLogs} setScores={setScores}/>;
       case "glossary":  return <GlossaryPage/>;
-      case "tutorials": return <TutorialsPage/>;
-      case "guides":    return <GuidesPage/>;
+      case "tutorials": return <TutorialsPage openGuide={openGuide}/>;
+      case "guides":    return <GuidesPage initialGuideId={guideId}/>;
       default: return null;
     }
   };

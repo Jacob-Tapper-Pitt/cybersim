@@ -12,14 +12,22 @@ const DIFF_BADGE = {
 
 const TAG_STYLE = "bg-slate-800 border border-slate-700 text-slate-400 text-[10px] px-2 py-0.5 rounded";
 
-function MarkdownView({ markdown }) {
+function MarkdownView({ markdown, openGuide }) {
   const html = renderMarkdown(markdown);
-  return (
-    <div className="md-content" dangerouslySetInnerHTML={{ __html: html }}/>
-  );
+
+  const handleClick = (event) => {
+    const link = event.target.closest("a.md-link");
+    const href = link?.getAttribute("href");
+    if (href?.startsWith("#guide=")) {
+      event.preventDefault();
+      openGuide(href.slice("#guide=".length));
+    }
+  };
+
+  return <div className="md-content" onClick={handleClick} dangerouslySetInnerHTML={{ __html: html }}/>;
 }
 
-export default function Tutorials() {
+export default function Tutorials({ openGuide }) {
   const [index, setIndex]         = useState([]);
   const [loading, setLoading]     = useState(true);
   const [error, setError]         = useState("");
@@ -84,7 +92,7 @@ export default function Tutorials() {
           Could not load tutorial: {contentError}
         </div>
       )}
-      {content && <MarkdownView markdown={content}/>}
+      {content && <MarkdownView markdown={content} openGuide={openGuide}/>}
     </div>
   );
 
