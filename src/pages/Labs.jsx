@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import {
-  Shield, Zap, Database, Lock, Mail, Wifi, List,
+  Shield, Zap, Database, Lock, Mail, Wifi, List, Sword,
   ArrowLeft, ArrowRight, CheckCircle, XCircle, RotateCcw,
   Eye, EyeOff, Play, Square, Terminal, Download,
   ChevronDown, ChevronRight, Activity, Award, BookOpen,
@@ -3853,7 +3853,7 @@ export default function LabsPage({ addLog, addScore, logs, scores, setLogs, setS
       {/* Page tabs */}
       <div className="flex items-center gap-2 flex-wrap">
         <button onClick={()=>switchDashPage(1)} className={`flex items-center gap-2 px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${dashPage===1?"bg-slate-800 border-cyan-500/40 text-cyan-400":"bg-slate-900/60 border-slate-800 text-slate-600 hover:text-slate-400"}`}><FlaskConical size={13}/> Fundamentals</button>
-        <button onClick={()=>switchDashPage(2)} className={`flex items-center gap-2 px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${dashPage===2?"bg-slate-800 border-cyan-500/40 text-cyan-400":"bg-slate-900/60 border-slate-800 text-slate-600 hover:text-slate-400"}`}><Shield size={13}/> Web Attacks</button>
+        <button onClick={()=>switchDashPage(2)} className={`flex items-center gap-2 px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${dashPage===2?"bg-slate-800 border-cyan-500/40 text-cyan-400":"bg-slate-900/60 border-slate-800 text-slate-600 hover:text-slate-400"}`}><Sword size={13}/> Web Attacks</button>
         <button onClick={()=>switchDashPage(3)} className={`flex items-center gap-2 px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${dashPage===3?"bg-slate-800 border-cyan-500/40 text-cyan-400":"bg-slate-900/60 border-slate-800 text-slate-600 hover:text-slate-400"}`}><Layers size={13}/> Advanced</button>
         <button onClick={()=>switchDashPage(4)} className={`flex items-center gap-2 px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${dashPage===4?"bg-slate-800 border-cyan-500/40 text-cyan-400":"bg-slate-900/60 border-slate-800 text-slate-600 hover:text-slate-400"}`}><Shield size={13}/> Defense Topics</button>
         <span className="ml-auto text-xs text-slate-600 hidden lg:block">{dashPage===1?"XSS · SQLi · Password · Phishing · Packet":dashPage===2?"CSRF · Traversal · Cmd Injection · IDOR · JWT":dashPage===3?"Open Redirect · Clickjacking · SSRF · File Upload · Headers":"Data Exposure · Deserialization · CORS · Enumeration · Mass Assignment"}</span>
