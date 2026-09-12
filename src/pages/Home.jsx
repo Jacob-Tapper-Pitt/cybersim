@@ -54,12 +54,12 @@ export default function Home({ setPage }) {
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"/>
             <span className="text-xs text-green-500 font-mono tracking-widest">ALL SIMULATIONS SANDBOXED — NO REAL ATTACKS</span>
           </div>
-          <div className="flex items-start gap-4 mb-4">
-            <Shield size={40} className="text-cyan-400 flex-shrink-0 mt-1"/>
-            <div>
+          <div className="mb-4">
+            <div className="flex items-center gap-4">
+              <Shield size={40} className="text-cyan-400 flex-shrink-0"/>
               <h1 className="text-5xl font-bold text-white leading-tight">CyberSim</h1>
-              <p className="text-cyan-400 font-mono text-sm mt-1">Student Cybersecurity Learning Platform</p>
             </div>
+            <p className="ml-14 text-cyan-400 font-mono text-sm mt-1">Student Cybersecurity Learning Platform</p>
           </div>
           <p className="text-slate-400 text-base leading-relaxed max-w-2xl">
             A hands-on learning environment for cybersecurity and networking students. Practice attacks and defenses in a safe sandbox, look up terminology, follow installation guides, and work through practical tutorials — all in one place.
