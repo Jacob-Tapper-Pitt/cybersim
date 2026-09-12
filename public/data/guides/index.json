@@ -38,5 +38,45 @@
     "duration": "20 min",
     "tags": ["VS Code", "Python", "Editor"],
     "file": "vscode-setup.md"
+  },
+  {
+    "id": "nmap-install",
+    "title": "Installing Nmap",
+    "description": "Install Nmap on Windows, macOS, and Linux, with a practical reference for scan types, output formats, and the Nmap Scripting Engine.",
+    "difficulty": "Beginner",
+    "category": "Network Tools",
+    "duration": "15 min",
+    "tags": ["Nmap", "Network Scanning", "Reconnaissance", "NSE"],
+    "file": "nmap-install.md"
+  },
+  {
+    "id": "burpsuite-install",
+    "title": "Installing Burp Suite Community Edition",
+    "description": "Install Burp Suite and configure it as an intercepting proxy for web application security testing, including CA certificate setup.",
+    "difficulty": "Beginner",
+    "category": "Web Security",
+    "duration": "25 min",
+    "tags": ["Burp Suite", "Web Security", "Proxy", "HTTP"],
+    "file": "burpsuite-install.md"
+  },
+  {
+    "id": "python-setup",
+    "title": "Setting Up Python 3",
+    "description": "Install Python 3, configure virtual environments, and set up the key security libraries used in scripting, exploit development, and CTF challenges.",
+    "difficulty": "Beginner",
+    "category": "Development Tools",
+    "duration": "20 min",
+    "tags": ["Python", "Scripting", "pwntools", "Scapy", "Virtual Environments"],
+    "file": "python-setup.md"
+  },
+  {
+    "id": "docker-install",
+    "title": "Installing Docker",
+    "description": "Install Docker Desktop or Docker Engine, learn the essential commands, and run vulnerable lab applications like DVWA and Juice Shop for practice.",
+    "difficulty": "Beginner",
+    "category": "Virtual Machines",
+    "duration": "30 min",
+    "tags": ["Docker", "Containers", "DVWA", "Juice Shop", "Lab Setup"],
+    "file": "docker-install.md"
   }
 ]
