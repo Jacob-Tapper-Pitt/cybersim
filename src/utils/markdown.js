@@ -59,7 +59,19 @@ export function renderMarkdown(raw) {
   text = text.replace(/\*\*([^*]+)\*\*/g,    "<strong class=\"md-bold\">$1</strong>");
   text = text.replace(/\*([^*\n]+)\*/g,       "<em class=\"md-italic\">$1</em>");
 
-  // Step 9 — lists (contiguous lines starting with - or * or number.)
+  // Step 9 — tables (a pipe-delimited header followed by a separator row)
+  text = text.replace(/((?:^[ \t]*\|[^\n]*(?:\n|$))+)/gm, (block) => {
+    const rows = block.trim().split("\n").map((line) => line.trim());
+    const separator = /^\|?\s*:?-{3,}:?\s*(?:\|\s*:?-{3,}:?\s*)+\|?$/;
+    if (rows.length < 2 || !separator.test(rows[1])) return block;
+
+    const cells = (row) => row.replace(/^\|/, "").replace(/\|$/, "").split("|").map((cell) => cell.trim());
+    const headers = cells(rows[0]);
+    const body = rows.slice(2).map(cells);
+    return `<table class="md-table"><thead><tr>${headers.map((cell) => `<th>${cell}</th>`).join("")}</tr></thead><tbody>${body.map((row) => `<tr>${row.map((cell) => `<td>${cell}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+  });
+
+  // Step 10 — lists (contiguous lines starting with - or * or number.)
   // Unordered
   text = text.replace(/((?:^[ \t]*[-*] .+\n?)+)/gm, (block) => {
     const items = block.trim().split("\n").map((ln) => {
@@ -77,20 +89,20 @@ export function renderMarkdown(raw) {
     return `<ol class="md-ol">${items.join("")}</ol>`;
   });
 
-  // Step 10 — paragraphs: wrap non-block lines separated by blank lines
+  // Step 11 — paragraphs: wrap non-block lines separated by blank lines
   text = text
     .split(/\n\n+/)
     .map((chunk) => {
       const t = chunk.trim();
       if (!t) return "";
       // Don't wrap if chunk is already a block element
-      if (/^<(h[1-6]|ul|ol|blockquote|hr|img|pre)/.test(t)) return t;
+      if (/^<(h[1-6]|ul|ol|blockquote|hr|img|pre|table)/.test(t)) return t;
       if (/\x00CODEBLOCK\d+\x00/.test(t)) return t;
       return `<p class="md-p">${t.replace(/\n/g, "<br />")}</p>`;
     })
     .join("\n");
 
-  // Step 11 — restore code blocks
+  // Step 12 — restore code blocks
   codeBlocks.forEach(({ lang, code }, i) => {
     const highlighted = escapeHtml(code);
     text = text.replace(
@@ -99,7 +111,7 @@ export function renderMarkdown(raw) {
     );
   });
 
-  // Step 12 — restore inline code
+  // Step 13 — restore inline code
   inlineCode.forEach((code, i) => {
     text = text.replace(`\x00INLINE${i}\x00`, `<code class="md-inline">${code}</code>`);
   });

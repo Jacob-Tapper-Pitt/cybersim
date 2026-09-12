@@ -38,5 +38,55 @@
     "duration": "40 min",
     "tags": ["Nmap", "Networking", "Reconnaissance"],
     "file": "nmap.md"
+  },
+  {
+    "id": "cryptography",
+    "title": "Cryptography Fundamentals",
+    "description": "Understand symmetric and asymmetric encryption, hashing, salting, and digital signatures — the concepts behind HTTPS, SSH, and password storage.",
+    "difficulty": "Beginner",
+    "category": "Security Concepts",
+    "duration": "30 min",
+    "tags": ["Cryptography", "Encryption", "Hashing"],
+    "file": "cryptography.md"
+  },
+  {
+    "id": "password-cracking",
+    "title": "Password Cracking Basics (John the Ripper & Hashcat)",
+    "description": "Learn how password hashes are attacked using dictionary, brute-force, and rule-based techniques, and how to defend against them.",
+    "difficulty": "Intermediate",
+    "category": "Security Tools",
+    "duration": "35 min",
+    "tags": ["Passwords", "Hashcat", "John the Ripper"],
+    "file": "password-cracking.md"
+  },
+  {
+    "id": "web-security",
+    "title": "Web Application Security Basics",
+    "description": "An introduction to the OWASP Top 10, including SQL injection, XSS, CSRF, and broken authentication, plus an intro to Burp Suite.",
+    "difficulty": "Beginner",
+    "category": "Web Security",
+    "duration": "35 min",
+    "tags": ["Web Security", "OWASP", "Burp Suite"],
+    "file": "web-security.md"
+  },
+  {
+    "id": "metasploit",
+    "title": "Metasploit Basics",
+    "description": "Learn the core Metasploit workflow — searching modules, configuring exploits, working with payloads, and managing sessions in a lab environment.",
+    "difficulty": "Intermediate",
+    "category": "Network Security",
+    "duration": "40 min",
+    "tags": ["Metasploit", "Exploitation", "Penetration Testing"],
+    "file": "metasploit.md"
+  },
+  {
+    "id": "python-security",
+    "title": "Python for Security Scripting",
+    "description": "Use Python to automate common security tasks: running system tools, basic networking, parsing logs, and calling web APIs.",
+    "difficulty": "Beginner",
+    "category": "Development Tools",
+    "duration": "35 min",
+    "tags": ["Python", "Scripting", "Automation"],
+    "file": "python-security.md"
   }
 ]
