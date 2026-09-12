@@ -2,7 +2,7 @@
 
 Web applications are one of the most common attack surfaces in security today — they're internet-facing, complex, and often built quickly. This tutorial introduces the OWASP Top 10 and the core vulnerability classes every student should recognize.
 
----
+--- 
 
 ## The OWASP Top 10 (Overview)
 
