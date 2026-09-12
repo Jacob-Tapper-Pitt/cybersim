@@ -971,7 +971,7 @@ const PasswordLab = ({ addLog, addScore, onBack }) => {
                   <span className="text-slate-500">{k}</span><span className={vc}>{v}</span>
                 </div>
               ))}
-              <div className="w-full bg-slate-800 rounded-full h-1.5 mt-1">
+              <div className="w-full bg-slate-800 rounded-full h-1.5 mt-1 overflow-hidden">
                 <div className={`h-1.5 rounded-full transition-all ${strBar[entropy.strength]}`} style={{width:strWidth[entropy.strength]}}/>
               </div>
             </div>
@@ -1157,9 +1157,12 @@ const PhishingLab = ({ addLog, addScore, onBack }) => {
             {Object.entries(INDICATOR_META).map(([key,meta])=>{
               const isOn   = !!checked[key];
               const isCorr = sel.indicators.includes(key);
-              const isRight = showAnswer && isOn && isCorr;
-              const isMiss  = showAnswer && !isOn && isCorr;
-              const isFP    = showAnswer && isOn && !isCorr;
+              // On success: always colour (student got it right, show the feedback immediately)
+              // On fail:    only colour after "Reveal Answer" is clicked
+              const shouldShowColor = labState === "success" || showAnswer;
+              const isRight = shouldShowColor && isOn && isCorr;
+              const isMiss  = shouldShowColor && !isOn && isCorr;
+              const isFP    = shouldShowColor && isOn && !isCorr;
               return (
                 <div key={key} onClick={() => toggleInd(key)}
                   className={`flex items-start gap-2.5 p-2.5 rounded-lg border transition-colors select-none ${labState==="idle"?"cursor-pointer":"cursor-default"} ${
@@ -1277,7 +1280,7 @@ const PacketLab = ({ addLog, addScore, onBack }) => {
     if (!running) return;
     genRef.current = setInterval(() => {
       const spoof = Math.random() < 0.35;
-      const pkt = { id:pktId.current++, src:spoof?`10.x.x.${~~(Math.random()*255)+1}`:`192.168.1.${~~(Math.random()*254)+1}`, dst:"10.0.0.1", spoof, blocked:false, x:0, age:0 };
+      const pkt = { id:pktId.current++, src:spoof?`10.x.x.${~~(Math.random()*255)+1}`:`192.168.1.${~~(Math.random()*254)+1}`, dst:"10.0.0.1", spoof, blocked:false, x:0, age:0, lane:~~(Math.random()*7) };
       statsRef.current.sent++;
       if (spoof) statsRef.current.spoofed++;
       setPkts(p=>[...p.slice(-30), pkt]);
@@ -1402,9 +1405,9 @@ const PacketLab = ({ addLog, addScore, onBack }) => {
                   <span>Block rate</span>
                   <span>{Math.round(stats.blocked/stats.spoofed*100)}%</span>
                 </div>
-                <div className="w-full bg-slate-800 rounded-full h-1.5">
+                <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
                   <div className="bg-green-500 h-1.5 rounded-full transition-all"
-                    style={{width:`${Math.round(stats.blocked/stats.spoofed*100)}%`}}/>
+                    style={{width:`${Math.min(100,Math.round(stats.blocked/stats.spoofed*100))}%`}}/>
                 </div>
               </div>
             )}
@@ -1430,7 +1433,7 @@ const PacketLab = ({ addLog, addScore, onBack }) => {
                 </div>
               ))}
               {pkts.map(p=>{
-                const xPct=7+(p.x/100)*84, yPct=50+((p.id%7)-3)*7;
+                const xPct=7+(p.x/100)*84, yPct=50+((p.lane??0)-3)*9;
                 const opacity=p.blocked?Math.max(0,1-(p.age??0)/18):1;
                 return (
                   <div key={p.id} title={`${p.spoof?"SPOOFED":"LEGIT"} ${p.src}`}
@@ -1544,8 +1547,8 @@ const CSRFLab = ({ addLog, addScore, onBack }) => {
               <Toggle enabled={def.sameSite}    onChange={v=>{setDef(d=>({...d,sameSite:v})); reset();}}    label="SameSite=Strict Cookie"  desc="Browser won't attach session cookie to cross-origin form submissions"/>
               <Toggle enabled={def.originCheck} onChange={v=>{setDef(d=>({...d,originCheck:v})); reset();}} label="Origin Header Validation" desc="Server rejects requests whose Origin doesn't match the site's domain"/>
             </div>
-            <button onClick={simulate}
-              className="mt-4 w-full flex items-center justify-center gap-2 bg-cyan-700 hover:bg-cyan-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm">
+            <button onClick={simulate} disabled={labState !== "idle"}
+              className={`mt-4 w-full flex items-center justify-center gap-2 bg-cyan-700 hover:bg-cyan-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm ${labState !== "idle" ? "opacity-40 cursor-not-allowed" : ""}`}>
               <Play size={14}/> Simulate Visit
             </button>
           </Card>
@@ -1729,7 +1732,7 @@ const TraversalLab = ({ addLog, addScore, onBack }) => {
             {labState === "fail" && result && (
               <div className="space-y-2">
                 <div className="flex items-center gap-1.5 text-xs text-red-400 font-semibold"><AlertTriangle size={11}/> 200 OK — sensitive file exposed</div>
-                <div className="text-[10px] text-slate-500 font-mono">{result.path}</div>
+                <div className="text-[10px] text-slate-500 font-mono break-all">{result.path}</div>
                 <div className="bg-slate-950 border border-slate-700 rounded-lg p-3">
                   <div className="text-[10px] text-red-400 font-semibold mb-1.5">FILE CONTENTS</div>
                   <pre className="font-mono text-[11px] text-red-300 whitespace-pre-wrap leading-relaxed">{result.contents}</pre>
@@ -2921,7 +2924,7 @@ const SecurityHeadersLab = ({ addLog, addScore, onBack }) => {
                   <circle cx="18" cy="18" r="14" fill="none" stroke="#1e293b" strokeWidth="3"/>
                   <circle cx="18" cy="18" r="14" fill="none"
                     stroke={allOn ? "#22c55e" : count>=3 ? "#f59e0b" : "#ef4444"}
-                    strokeWidth="3" strokeDasharray={`${count/5*88} 88`} strokeLinecap="round"/>
+                    strokeWidth="3" strokeDasharray={`${Math.min(87.5, count/5*88)} 88`} strokeLinecap="round"/>
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <span className={`text-sm font-mono font-bold ${allOn?"text-green-400":count>=3?"text-amber-400":"text-red-400"}`}>{count}/5</span>
