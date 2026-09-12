@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Search, BookOpen, ChevronDown, ChevronRight, Layers, ArrowLeft, ArrowRight, RotateCcw } from "lucide-react";
+import { Search, BookOpen, ChevronDown, ChevronRight, Layers, ArrowLeft, ArrowRight, RotateCcw, Shuffle } from "lucide-react";
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -30,6 +30,7 @@ export default function Glossary() {
   const [mode, setMode] = useState("list");
   const [flashcardIndex, setFlashcardIndex] = useState(0);
   const [flashcardRevealed, setFlashcardRevealed] = useState(false);
+  const [flashcardOrder, setFlashcardOrder] = useState([]);
 
   useEffect(() => {
     fetch(`${BASE}data/glossary.json`)
@@ -54,15 +55,29 @@ export default function Glossary() {
   useEffect(() => {
     setFlashcardIndex(0);
     setFlashcardRevealed(false);
-  }, [search, catFilter]);
+    setFlashcardOrder(filtered.map(term => term.id));
+  }, [terms, search, catFilter]);
 
-  const currentFlashcard = filtered[flashcardIndex];
+  const flashcards = flashcardOrder
+    .map(id => filtered.find(term => term.id === id))
+    .filter(Boolean);
+  const currentFlashcard = flashcards[flashcardIndex];
   const showPreviousFlashcard = () => {
-    setFlashcardIndex(index => (index - 1 + filtered.length) % filtered.length);
+    setFlashcardIndex(index => (index - 1 + flashcards.length) % flashcards.length);
     setFlashcardRevealed(false);
   };
   const showNextFlashcard = () => {
-    setFlashcardIndex(index => (index + 1) % filtered.length);
+    setFlashcardIndex(index => (index + 1) % flashcards.length);
+    setFlashcardRevealed(false);
+  };
+  const shuffleFlashcards = () => {
+    const shuffled = [...filtered.map(term => term.id)];
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+      [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+    }
+    setFlashcardOrder(shuffled);
+    setFlashcardIndex(0);
     setFlashcardRevealed(false);
   };
 
@@ -107,8 +122,14 @@ export default function Glossary() {
             <Layers size={13}/> Flashcards
           </button>
         </div>
-        {mode === "flashcards" && filtered.length > 0 && (
-          <span className="text-xs text-slate-600">{flashcardIndex + 1} of {filtered.length}</span>
+        {mode === "flashcards" && flashcards.length > 0 && (
+          <div className="flex items-center gap-3">
+            <span className="text-xs text-slate-600">{flashcardIndex + 1} of {flashcards.length}</span>
+            <button onClick={shuffleFlashcards}
+              className="flex items-center gap-1.5 rounded-md border border-slate-700 px-3 py-1.5 text-xs text-slate-400 transition-colors hover:border-emerald-500/50 hover:text-emerald-400">
+              <Shuffle size={13}/> Shuffle
+            </button>
+          </div>
         )}
       </div>
 
