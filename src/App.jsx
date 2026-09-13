@@ -119,7 +119,7 @@ export default function App() {
     <div className="flex flex-col h-screen overflow-hidden bg-gray-950 text-slate-300">
 
       {/* ── Header ── */}
-      <header className="flex-shrink-0 bg-slate-900/95 border-b border-slate-800">
+      <header className="relative z-50 flex-shrink-0 bg-slate-900/95 border-b border-slate-800">
         <div className="flex items-center justify-between px-6 py-3">
 
           {/* Left — logo */}
