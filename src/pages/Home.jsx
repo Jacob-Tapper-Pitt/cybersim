@@ -1,4 +1,4 @@
-import { FlaskConical, BookOpen, Terminal, Wrench, ArrowRight, Shield, Zap, Lock, Database, ShieldCheck } from "lucide-react";
+import { FlaskConical, BookOpen, Terminal, Wrench, ArrowRight, Shield, Lock, ShieldCheck, Award } from "lucide-react";
 
 const sections = [
   {
@@ -33,6 +33,14 @@ const sections = [
     desc: "Complete setup instructions for every piece of software you will need for cybersecurity courses. Covers Windows, macOS, and Linux, with troubleshooting for the most common problems.",
     items: ["VirtualBox + Kali Linux VM", "Wireshark with capture permissions", "Git with SSH authentication", "VS Code for security work", "More guides added regularly"],
   },
+  {
+    id: "certifications",
+    Icon: Award,
+    label: "Certifications",
+    color: "sky",
+    desc: "Explore cybersecurity certifications by field, industry value, and beginner fit. Use the interactive map to find a path that matches your goals.",
+    items: ["Security+ and entry-level paths", "Cloud and identity credentials", "Offensive security certifications", "Incident response and forensics", "Ranked student-friendly options"],
+  },
 ];
 
 const colorMap = {
@@ -40,6 +48,7 @@ const colorMap = {
   emerald: { border:"border-emerald-500/20",icon:"text-emerald-400", dot:"bg-emerald-400", btn:"bg-emerald-700 hover:bg-emerald-600", badge:"bg-emerald-900/40 text-emerald-300" },
   amber:   { border:"border-amber-500/20",  icon:"text-amber-400",   dot:"bg-amber-400",   btn:"bg-amber-700 hover:bg-amber-600",   badge:"bg-amber-900/40 text-amber-300"  },
   violet:  { border:"border-violet-500/20", icon:"text-violet-400",  dot:"bg-violet-400",  btn:"bg-violet-700 hover:bg-violet-600",  badge:"bg-violet-900/40 text-violet-300" },
+  sky:     { border:"border-sky-500/20",    icon:"text-sky-400",     dot:"bg-sky-400",      btn:"bg-sky-700 hover:bg-sky-600",      badge:"bg-sky-900/40 text-sky-300" },
 };
 
 export default function Home({ setPage }) {
@@ -103,30 +112,17 @@ export default function Home({ setPage }) {
       {/* Section cards */}
       <div>
         <h2 className="text-xs font-semibold text-slate-600 uppercase tracking-widest mb-5">What's Available</h2>
-        <div className="grid grid-cols-2 gap-4">
-          {sections.map(({ id, Icon, label, color, desc, items }) => {
-            const c = colorMap[color];
-            return (
-              <div key={id} className={`bg-slate-900 border ${c.border} rounded-xl p-5 flex flex-col`}>
-                <div className="flex items-center gap-3 mb-3">
-                  <Icon size={20} className={c.icon}/>
-                  <h3 className="font-semibold text-slate-200 text-sm">{label}</h3>
-                </div>
-                <p className="text-xs text-slate-500 leading-relaxed mb-4 flex-1">{desc}</p>
-                <ul className="space-y-1 mb-4">
-                  {items.map(item => (
-                    <li key={item} className="flex items-center gap-2 text-xs text-slate-400">
-                      <span className={`w-1 h-1 rounded-full flex-shrink-0 ${c.dot}`}/>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <button onClick={() => setPage(id)}
-                  className={`flex items-center justify-center gap-2 ${c.btn} text-white text-xs font-semibold py-2 rounded-lg transition-colors`}>
-                  Open {label} <ArrowRight size={12}/>
-                </button>
-              </div>
-            );
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
+          {sections.map((section, index) => {
+            const SectionIcon = section.Icon;
+            const color = colorMap[section.color];
+            const placement = index === 3 ? "lg:col-start-2" : index === 4 ? "lg:col-start-4" : "";
+            return <div key={section.id} className={`bg-slate-900 border ${color.border} rounded-xl p-5 flex flex-col min-h-[300px] transition-colors lg:col-span-2 ${placement}`}>
+              <div className="flex items-center gap-3 mb-3"><SectionIcon size={20} className={color.icon}/><h3 className="font-semibold text-slate-200 text-sm">{section.label}</h3></div>
+              <p className="text-xs text-slate-500 leading-relaxed mb-4 flex-1">{section.desc}</p>
+              <ul className="space-y-1 mb-4">{section.items.slice(0, 4).map(item => <li key={item} className="flex items-center gap-2 text-xs text-slate-400"><span className={`w-1 h-1 rounded-full flex-shrink-0 ${color.dot}`}/>{item}</li>)}</ul>
+              <button onClick={() => setPage(section.id)} className={`flex items-center justify-center gap-2 ${color.btn} text-white text-xs font-semibold py-2 rounded-lg transition-colors`}>Open {section.label} <ArrowRight size={12}/></button>
+            </div>;
           })}
         </div>
       </div>
