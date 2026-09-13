@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FlaskConical, BookOpen, Terminal, Wrench, ArrowLeft, ArrowRight, Shield, Lock, ShieldCheck, Award } from "lucide-react";
 
 const sections = [
@@ -62,9 +62,24 @@ export default function Home({ setPage }) {
   const handleAvailableKeyDown = (event) => {
     if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
       event.preventDefault();
+      event.stopPropagation();
       moveAvailable(event.key === "ArrowLeft" ? -1 : 1);
     }
   };
+
+  useEffect(() => {
+    const handleWindowKeyDown = (event) => {
+      const target = event.target;
+      if (target instanceof HTMLElement && (target.isContentEditable || ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName))) return;
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault();
+        moveAvailable(event.key === "ArrowLeft" ? -1 : 1);
+      }
+    };
+
+    window.addEventListener("keydown", handleWindowKeyDown);
+    return () => window.removeEventListener("keydown", handleWindowKeyDown);
+  }, []);
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-10 space-y-12">
@@ -131,7 +146,7 @@ export default function Home({ setPage }) {
             className="flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-slate-400 hover:text-white hover:border-slate-500 transition-colors">
             <ArrowLeft size={16}/>
           </button>
-          <div className="flex-1 min-w-0" tabIndex={0} role="region" aria-label="What's available" aria-live="polite" onKeyDown={handleAvailableKeyDown}>
+          <div className="flex-1 min-w-0 rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/60" tabIndex={0} role="region" aria-roledescription="carousel" aria-label="What's available" aria-live="polite" onKeyDown={handleAvailableKeyDown}>
             <div className="relative min-h-[300px] overflow-hidden rounded-xl" style={{ perspective: "1200px" }}>
               {sections.map((section, index) => {
                 const SectionIcon = section.Icon;
