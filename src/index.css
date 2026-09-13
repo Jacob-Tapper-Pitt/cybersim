@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+select {
+	color-scheme: dark;
+}
+
 .flashcard-scene {
 	perspective: 1000px;
 }
