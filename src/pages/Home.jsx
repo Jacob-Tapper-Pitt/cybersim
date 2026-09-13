@@ -1,4 +1,5 @@
-import { FlaskConical, BookOpen, Terminal, Wrench, ArrowRight, Shield, Lock, ShieldCheck, Award } from "lucide-react";
+import { useState } from "react";
+import { FlaskConical, BookOpen, Terminal, Wrench, ArrowLeft, ArrowRight, Shield, Lock, ShieldCheck, Award } from "lucide-react";
 
 const sections = [
   {
@@ -52,6 +53,19 @@ const colorMap = {
 };
 
 export default function Home({ setPage }) {
+  const [availableIndex, setAvailableIndex] = useState(0);
+
+  const moveAvailable = (direction) => {
+    setAvailableIndex(current => (current + direction + sections.length) % sections.length);
+  };
+
+  const handleAvailableKeyDown = (event) => {
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      event.preventDefault();
+      moveAvailable(event.key === "ArrowLeft" ? -1 : 1);
+    }
+  };
+
   return (
     <div className="max-w-5xl mx-auto px-6 py-10 space-y-12">
       {/* Hero */}
@@ -112,18 +126,59 @@ export default function Home({ setPage }) {
       {/* Section cards */}
       <div>
         <h2 className="text-xs font-semibold text-slate-600 uppercase tracking-widest mb-5">What's Available</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
-          {sections.map((section, index) => {
-            const SectionIcon = section.Icon;
-            const color = colorMap[section.color];
-            const placement = index === 3 ? "lg:col-start-2" : index === 4 ? "lg:col-start-4" : "";
-            return <div key={section.id} className={`bg-slate-900 border ${color.border} rounded-xl p-5 flex flex-col min-h-[300px] transition-colors lg:col-span-2 ${placement}`}>
-              <div className="flex items-center gap-3 mb-3"><SectionIcon size={20} className={color.icon}/><h3 className="font-semibold text-slate-200 text-sm">{section.label}</h3></div>
-              <p className="text-xs text-slate-500 leading-relaxed mb-4 flex-1">{section.desc}</p>
-              <ul className="space-y-1 mb-4">{section.items.slice(0, 4).map(item => <li key={item} className="flex items-center gap-2 text-xs text-slate-400"><span className={`w-1 h-1 rounded-full flex-shrink-0 ${color.dot}`}/>{item}</li>)}</ul>
-              <button onClick={() => setPage(section.id)} className={`flex items-center justify-center gap-2 ${color.btn} text-white text-xs font-semibold py-2 rounded-lg transition-colors`}>Open {section.label} <ArrowRight size={12}/></button>
-            </div>;
-          })}
+        <div className="flex items-center gap-3">
+          <button onClick={() => moveAvailable(-1)} aria-label="Previous available section"
+            className="flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-slate-400 hover:text-white hover:border-slate-500 transition-colors">
+            <ArrowLeft size={16}/>
+          </button>
+          <div className="flex-1 min-w-0" tabIndex={0} role="region" aria-label="What's available" aria-live="polite" onKeyDown={handleAvailableKeyDown}>
+            <div className="relative min-h-[300px] overflow-hidden rounded-xl" style={{ perspective: "1200px" }}>
+              {sections.map((section, index) => {
+                const SectionIcon = section.Icon;
+                const color = colorMap[section.color];
+                const offset = ((index - availableIndex + sections.length + 2) % sections.length) - 2;
+                const distance = Math.abs(offset);
+                const isActive = offset === 0;
+                return (
+                  <div key={section.id} className="absolute left-[12%] top-1/2 w-[76%] md:left-[18%] md:w-[64%] transition-all duration-500 ease-out"
+                    style={{
+                      transform: `translateX(${offset * 48}%) translateY(-50%) translateZ(${-distance * 90}px) rotateY(${offset * -28}deg) scale(${isActive ? 0.92 : 0.76})`,
+                      opacity: distance > 1 ? 0.35 : isActive ? 1 : 0.78,
+                      zIndex: isActive ? 10 : 5 - distance,
+                      pointerEvents: isActive ? "auto" : "none",
+                    }}>
+                    <div className={`bg-slate-900 border ${color.border} rounded-xl p-4 flex flex-col min-h-[235px] shadow-2xl`}>
+                      <div className="flex items-center gap-3 mb-3">
+                        <SectionIcon size={20} className={color.icon}/>
+                        <h3 className="font-semibold text-slate-200 text-sm">{section.label}</h3>
+                      </div>
+                      <p className="text-xs text-slate-500 leading-relaxed mb-4 flex-1">{section.desc}</p>
+                      <ul className="space-y-1 mb-4">
+                        {section.items.slice(0, 4).map(item => (
+                          <li key={item} className="flex items-center gap-2 text-xs text-slate-400">
+                            <span className={`w-1 h-1 rounded-full flex-shrink-0 ${color.dot}`}/>{item}
+                          </li>
+                        ))}
+                      </ul>
+                      <button onClick={() => setPage(section.id)} className={`flex items-center justify-center gap-2 ${color.btn} text-white text-xs font-semibold py-2 rounded-lg transition-colors`}>
+                        Open {section.label} <ArrowRight size={12}/>
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <button onClick={() => moveAvailable(1)} aria-label="Next available section"
+            className="flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-slate-400 hover:text-white hover:border-slate-500 transition-colors">
+            <ArrowRight size={16}/>
+          </button>
+        </div>
+        <div className="flex justify-center gap-1.5 mt-3" aria-label="Available section indicators">
+          {sections.map((section, index) => (
+            <button key={section.id} onClick={() => setAvailableIndex(index)} aria-label={`Show ${section.label}`}
+              className={`w-1.5 h-1.5 rounded-full transition-colors ${index === availableIndex ? "bg-cyan-400" : "bg-slate-700"}`}/>
+          ))}
         </div>
       </div>
 
