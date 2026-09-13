@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
-import { Shield, FlaskConical, BookOpen, Terminal, Wrench, Home, Award } from "lucide-react";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { Shield, FlaskConical, BookOpen, Terminal, Wrench, Home, Award, ArrowUp } from "lucide-react";
 import HomePage     from "./pages/Home";
 import LabsPage     from "./pages/Labs";
 import GlossaryPage from "./pages/Glossary";
@@ -46,6 +46,8 @@ export default function App() {
   const [logs, setLogs]       = useState([]);
   const [consoleOpen, setConsoleOpen] = useState(true);
   const [clock, setClock]     = useState(() => new Date().toLocaleTimeString());
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const mainRef = useRef(null);
 
   const addLog   = useCallback(e => setLogs(p => [...p.slice(-999), e]), []);
   // addScore is kept as a no-op so Labs.jsx internal calls don't throw
@@ -101,6 +103,18 @@ export default function App() {
     return () => clearInterval(t);
   }, []);
 
+  useEffect(() => {
+    const main = mainRef.current;
+    if (!main) return undefined;
+    const handleScroll = () => setShowBackToTop(main.scrollTop > 320);
+    main.addEventListener("scroll", handleScroll, { passive: true });
+    return () => main.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    mainRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const renderPage = () => {
     switch (page) {
       case "home":      return <HomePage setPage={setPage}/>;
@@ -149,9 +163,20 @@ export default function App() {
       </header>
 
       {/* ── Page content ── */}
-      <main className="flex-1 overflow-y-auto min-h-0">
+      <main ref={mainRef} className="flex-1 overflow-y-auto min-h-0">
         {renderPage()}
       </main>
+
+      {showBackToTop && (
+        <button
+          onClick={scrollToTop}
+          aria-label="Back to top"
+          title="Back to top"
+          className="fixed bottom-6 right-6 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-cyan-500/40 bg-slate-900 text-cyan-400 shadow-lg shadow-black/30 transition-colors hover:bg-slate-800 hover:text-cyan-300"
+        >
+          <ArrowUp size={17}/>
+        </button>
+      )}
 
       {/* ── Console strip (Labs only) ── */}
       {showConsole && (
