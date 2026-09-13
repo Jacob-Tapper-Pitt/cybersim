@@ -48,7 +48,7 @@ const colorMap = {
   emerald: { border:"border-emerald-500/20",icon:"text-emerald-400", dot:"bg-emerald-400", btn:"bg-emerald-700 hover:bg-emerald-600", badge:"bg-emerald-900/40 text-emerald-300" },
   amber:   { border:"border-amber-500/20",  icon:"text-amber-400",   dot:"bg-amber-400",   btn:"bg-amber-700 hover:bg-amber-600",   badge:"bg-amber-900/40 text-amber-300"  },
   violet:  { border:"border-violet-500/20", icon:"text-violet-400",  dot:"bg-violet-400",  btn:"bg-violet-700 hover:bg-violet-600",  badge:"bg-violet-900/40 text-violet-300" },
-  sky:     { border:"border-sky-500/20",    icon:"text-sky-400",     dot:"bg-sky-400",      btn:"bg-sky-700 hover:bg-sky-600",      badge:"bg-sky-900/40 text-sky-300" },
+  sky:     { border:"border-blue-700/40",    icon:"text-blue-400",     dot:"bg-blue-500",      btn:"bg-blue-800 hover:bg-blue-700",      badge:"bg-blue-950/60 text-blue-300" },
 };
 
 export default function Home({ setPage }) {
